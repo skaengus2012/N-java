@@ -8,10 +8,8 @@ repositories {
     mavenCentral()
 }
 
-compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_7
-    targetCompatibility JavaVersion.VERSION_1_7
-}
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
