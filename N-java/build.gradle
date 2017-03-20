@@ -1,18 +1,10 @@
-group 'com.github.skaengus2012'
-version '0.0.2-alpha'
-
 apply plugin: 'java'
 apply plugin: 'maven'
 
-sourceCompatibility = 1.7
+group = 'com.github.skaengus2012'
+version = '0.0.2-alpha'
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-        }
-    }
-}
+sourceCompatibility = 1.7
 
 repositories {
     mavenCentral()
