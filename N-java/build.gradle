@@ -1,5 +1,5 @@
 group 'com.github.skaengus2012'
-version '1.0-SNAPSHOT'
+version '0.0.2-alpha'
 
 apply plugin: 'java'
 
