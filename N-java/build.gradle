@@ -4,8 +4,6 @@ apply plugin: 'maven'
 group = 'com.github.skaengus2012'
 version = '0.0.2-alpha'
 
-sourceCompatibility = 1.7
-
 repositories {
     mavenCentral()
 }
