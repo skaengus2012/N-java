@@ -6,7 +6,7 @@
   <property name="module.jdk.bin.n-java_test" value="${project.jdk.bin}"/>
   <property name="module.jdk.classpath.n-java_test" value="${project.jdk.classpath}"/>
   
-  <property name="compiler.args.n-java_test" value="-encoding UTF-8 -source 1.7 -target 1.8 ${compiler.args}"/>
+  <property name="compiler.args.n-java_test" value="-encoding UTF-8 -source 1.5 -target 1.8 ${compiler.args}"/>
   
   <property name="n-java_test.output.dir" value="undefined"/>
   <property name="n-java_test.testoutput.dir" value="${module.n-java_test.basedir}/../../build/classes/test"/>
