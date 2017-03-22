@@ -35,6 +35,12 @@ Add it your pom.xml at your project.
       <url>https://jitpack.io</url>
    </repository>
 </repositories>
+
+<dependency>
+   <groupId>com.github.skaengus2012</groupId>
+   <artifactId>N-java</artifactId>
+   <version>0.0.6.2-alpha</version>
+</dependency>
 ```
 
 # Support Function
