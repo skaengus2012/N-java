@@ -7,8 +7,8 @@ You can find module in this link.
 
 # Support Function
 
-<B>1. Lambda combination</B> : https://github.com/skaengus2012/Ndroid#lambda-combination<br/>
-<B>2. MaybeUtil</B> : https://github.com/skaengus2012/Ndroid#maybeutil<br/>
+<B>1. Lambda combination</B> : https://github.com/skaengus2012/N-java#lambda-combination<br/>
+<B>2. MaybeUtil</B> : https://github.com/skaengus2012/N-java#maybeutil<br/>
 
 # Lambda combination
 
