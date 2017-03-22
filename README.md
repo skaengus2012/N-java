@@ -7,6 +7,7 @@ You can find module in Support Function index : [https://github.com/skaengus2012
 # Getting started
 
 <H3>Gradle Project</H3>
+
 <B>STEP1</B> : Add it in your root build.gradle at the end of repositories:
 ```gradle
 allprojects {
