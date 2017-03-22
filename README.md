@@ -164,7 +164,7 @@ Observable.range(0, 60).filter(
 ```
 
 So we do not check exception while using lambda. <br/>
-Please check <B>Ndroid.appFactory.common.function</B> pakage. you can use simple lambda.<br/><br/>
+Please check <B>NJava.appFactory.common.function</B> pakage. you can use simple lambda.<br/><br/>
 
 
 # MaybeUtil
