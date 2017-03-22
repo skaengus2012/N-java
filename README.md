@@ -1,9 +1,27 @@
 # N-java
-This is utility for RxJava. This source was originally part of Ndroid. I separated the part that could only exist in Java.
+This is utility for RxJava. This source was originally part of Ndroid. I separated the part that could only exist in Java.<br/>
+This library support <B>Java7</B> and that used <B>RxJava2</B>. 
 
-You can find module in this link.
+You can find module in Support Function index : [https://github.com/skaengus2012/N-java#support-function]
 
+# Getting started
 
+<H3>Gradle Project</H3>
+<B>STEP1</B> : Add it in your root build.gradle at the end of repositories:
+```gradle
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+<B>STEP2</B> : Add the dependency:<br/>
+```gradle
+dependencies {
+    compile 'com.github.skaengus2012:N-java:0.0.6.2-alpha'
+}
+```
 
 # Support Function
 
