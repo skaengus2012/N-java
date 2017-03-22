@@ -6,7 +6,7 @@ You can find module in Support Function index : [https://github.com/skaengus2012
 
 # Getting started
 
-<H3>Gradle Project</H3>
+<H2>Gradle Project</H2>
 
 <B>STEP1</B> : Add it in your root build.gradle at the end of repositories:
 ```gradle
@@ -22,6 +22,19 @@ allprojects {
 dependencies {
     compile 'com.github.skaengus2012:N-java:0.0.6.2-alpha'
 }
+```
+
+<H2>Maven Project</H2>
+
+Add it your pom.xml at your project.
+
+```xml
+<repositories>
+   <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+   </repository>
+</repositories>
 ```
 
 # Support Function
