@@ -5,6 +5,7 @@ import Njava.util.time.TimeBuilder;
 import Njava.util.time.TimeUtil;
 import io.reactivex.annotations.NonNull;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -14,7 +15,9 @@ public class TimeUtilTest {
 
     @org.junit.Test
     public void runEndOfDayTest() {
-        System.out.println(TimeUtil.GetEndDayOfMonth(2017, 1));
+        Calendar calendar = TimeUtil.GetCalendarEndDayOfMonth(2016, 2);
+        
+        System.out.println(TimeUtil.GetMonth(calendar) + " " + TimeUtil.GetMonthForHuman(calendar));
     }
 
     @org.junit.Test
@@ -35,14 +38,14 @@ public class TimeUtilTest {
     @org.junit.Test
     public void runTimeBuilderTest() {
         TimeBuilder.Create("2016.12.12", "yyyy.MM.dd").
-                endDayOfMonth().to_yyMMdd().
+                endDayOfMonth().to_yyMMdd().addDay(1).
                 getStringFormat("yyyy-MM-dd hh:mm:ss a").subscribe(new IExConsumer<String>() {
             @Override
             public void accept(@NonNull String s) throws Exception {
-                 System.out.println(s);
+
+                System.out.println(s);
             }
         });
-
 
     }
 }

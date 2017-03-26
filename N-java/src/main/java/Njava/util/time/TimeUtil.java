@@ -419,7 +419,7 @@ public class TimeUtil {
         Calendar result = Calendar.getInstance();
         result.setTime(calendar.getTime());
 
-        result.set(Calendar.HOUR, 0);
+        result.set(Calendar.HOUR_OF_DAY, 0);
         result.set(Calendar.MINUTE, 0);
         result.set(Calendar.SECOND, 0);
         result.set(Calendar.MILLISECOND, 0);
