@@ -51,7 +51,7 @@ public class TimeUtilTest {
         });
 
         System.out.println(TimeUtil.GetEndDayOfMonth(Calendar.getInstance()));
-        System.out.println(TimeUtil.GetEndDayOfMonth(2016, 2));
+        System.out.println(TimeUtil.GetEndDayOfMonth(2017, 2));
 
         TimeBuilder.Create(TimeUtil.GetCalendarStartDayOfMonth(2016, 1)).
                 getStringFormat("yyyy-MM-dd hh:mm:ss a").subscribe(new IExConsumer<String>() {
