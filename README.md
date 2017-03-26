@@ -20,7 +20,7 @@ allprojects {
 <B>STEP2</B> : Add the dependency:<br/>
 ```gradle
 dependencies {
-    compile 'com.github.skaengus2012:N-java:0.1.0-beta'
+    compile 'com.github.skaengus2012:N-java:0.1.1-beta'
 }
 ```
 
@@ -39,7 +39,7 @@ Add it your pom.xml at your project.
 <dependency>
    <groupId>com.github.skaengus2012</groupId>
    <artifactId>N-java</artifactId>
-   <version>0.1.0-beta</version>
+   <version>0.1.1-beta</version>
 </dependency>
 ```
 
