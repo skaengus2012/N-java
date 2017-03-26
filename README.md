@@ -47,7 +47,7 @@ Add it your pom.xml at your project.
 
 <B>1. Lambda combination</B> : https://github.com/skaengus2012/N-java#lambda-combination<br/>
 <B>2. MaybeUtil</B> : https://github.com/skaengus2012/N-java#maybeutil<br/>
-<B>3. TimeUtil & TimeBuilder </B> : https://github.com/skaengus2012/N-java/blob/master/README.md#timeutil--timebuilder <br/>
+<B>3. TimeUtil & TimeBuilder </B> : https://github.com/skaengus2012/N-java/#timeutil--timebuilder <br/>
 
 # Lambda combination
 
