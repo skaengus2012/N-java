@@ -328,13 +328,13 @@ public class TimeUtil {
      * Return First Calendar of Month.
      *
      * @param year
-     * @param month
+     * @param monthForHuman (1-12)
      * @return
      */
     @NonNull
-    public static Calendar GetCalendarStartDayOfMonth(@NonNull int year, @NonNull int month) {
+    public static Calendar GetCalendarStartDayOfMonth(@NonNull int year, @NonNull int monthForHuman) {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, 1);
+        calendar.set(year, monthForHuman - 1, 1);
 
         return calendar;
     }
@@ -343,13 +343,13 @@ public class TimeUtil {
      * Return End Calendar of Month.
      *
      * @param year
-     * @param month
+     * @param monthForHuman (1-12)
      * @return
      */
     @NonNull
-    public static Calendar GetCalendarEndDayOfMonth(@NonNull int year, @NonNull int month) {
+    public static Calendar GetCalendarEndDayOfMonth(@NonNull int year, @NonNull int monthForHuman) {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, 0);
+        calendar.set(year, monthForHuman, 0);
 
         return calendar;
     }
@@ -358,15 +358,12 @@ public class TimeUtil {
      * Return end day of month.
      *
      * @param year
-     * @param month
+     * @param monthForHuman (1-12)
      * @return
      */
     @NonNull
-    public static int GetEndDayOfMonth(@NonNull int year, @NonNull int month) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, 0);
-
-        return GetDay(GetCalendarEndDayOfMonth(year, month));
+    public static int GetEndDayOfMonth(@NonNull int year, @NonNull int monthForHuman) {
+        return GetDay(GetCalendarEndDayOfMonth(year, monthForHuman));
     }
 
     /**

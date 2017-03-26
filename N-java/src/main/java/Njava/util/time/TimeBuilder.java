@@ -97,7 +97,7 @@ public class TimeBuilder {
      * @return
      */
     public TimeBuilder firstDayOfMonth() {
-        calendar = TimeUtil.GetCalendarStartDayOfMonth(TimeUtil.GetYear(calendar), TimeUtil.GetMonth(calendar));
+        calendar = TimeUtil.GetCalendarStartDayOfMonth(TimeUtil.GetYear(calendar), TimeUtil.GetMonthForHuman(calendar));
 
         return this;
     }
@@ -108,7 +108,7 @@ public class TimeBuilder {
      * @return
      */
     public TimeBuilder endDayOfMonth() {
-        calendar = TimeUtil.GetCalendarEndDayOfMonth(TimeUtil.GetYear(calendar), TimeUtil.GetMonth(calendar) + 1);
+        calendar = TimeUtil.GetCalendarEndDayOfMonth(TimeUtil.GetYear(calendar), TimeUtil.GetMonthForHuman(calendar));
 
         return this;
     }

@@ -38,7 +38,10 @@ public class TimeUtilTest {
     @org.junit.Test
     public void runTimeBuilderTest() {
         TimeBuilder.Create("2016.12.12", "yyyy.MM.dd").
-                endDayOfMonth().to_yyMMdd().addDay(1).
+                addMonth(-2).
+                addYear(-1).
+                endDayOfMonth().
+                to_yyMMdd().
                 getStringFormat("yyyy-MM-dd hh:mm:ss a").subscribe(new IExConsumer<String>() {
             @Override
             public void accept(@NonNull String s) throws Exception {
@@ -47,5 +50,15 @@ public class TimeUtilTest {
             }
         });
 
+        System.out.println(TimeUtil.GetEndDayOfMonth(Calendar.getInstance()));
+        System.out.println(TimeUtil.GetEndDayOfMonth(2016, 2));
+
+        TimeBuilder.Create(TimeUtil.GetCalendarStartDayOfMonth(2016, 1)).
+                getStringFormat("yyyy-MM-dd hh:mm:ss a").subscribe(new IExConsumer<String>() {
+            @Override
+            public void accept(@NonNull String s) throws Exception {
+                System.out.println(s);
+            }
+        });
     }
 }
