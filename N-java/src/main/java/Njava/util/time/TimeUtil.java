@@ -111,8 +111,8 @@ public class TimeUtil {
      * @return
      */
     @NonNull
-    public static int GetMonthForHuman() {
-        return GetMonthForHuman(Calendar.getInstance());
+    public static int GetHumanMonth() {
+        return GetHumanMonth(Calendar.getInstance());
     }
 
     /**
@@ -121,7 +121,7 @@ public class TimeUtil {
      * @return
      */
     @NonNull
-    public static int GetMonthForHuman(@NonNull Calendar calendar) {
+    public static int GetHumanMonth(@NonNull Calendar calendar) {
         return GetMonth(calendar) + 1;
     }
 
@@ -131,8 +131,8 @@ public class TimeUtil {
      * @return
      */
     @NonNull
-    public static int GetMonthForHuman(@NonNull Date date) {
-        return GetMonthForHuman(ToCalendar(date));
+    public static int GetHumanMonth(@NonNull Date date) {
+        return GetHumanMonth(ToCalendar(date));
     }
 
     /**
@@ -165,163 +165,6 @@ public class TimeUtil {
     @NonNull
     public static int GetDay(@NonNull Date date) {
         return GetDay(ToCalendar(date));
-    }
-
-    /**
-     * Return current 24 Hour
-     *
-     * @return
-     */
-    @NonNull
-    public static int GetHour24() {
-        return GetHour24(Calendar.getInstance());
-    }
-
-    /**
-     * Return 24 Hour
-     *
-     * @param calendar
-     * @return
-     */
-    @NonNull
-    public static int GetHour24(@NonNull Calendar calendar) {
-        return calendar.get(Calendar.HOUR_OF_DAY);
-    }
-
-    /**
-     * Return 24 Hour.
-     *
-     * @param date
-     * @return
-     */
-    @NonNull
-    public static int GetHour24(@NonNull Date date) {
-        return GetHour24(ToCalendar(date));
-    }
-
-    /**
-     * Return current 12 Hour.
-     *
-     * @return
-     */
-    @NonNull
-    public static int GetHour12() {
-        return GetHour12(Calendar.getInstance());
-    }
-
-    /**
-     * Return 12 Hour.
-     *
-     * @param calendar
-     * @return
-     */
-    @NonNull
-    public static int GetHour12(@NonNull Calendar calendar) {
-        return calendar.get(Calendar.HOUR);
-    }
-
-    /**
-     * Return 12 Hour.
-     *
-     * @param date
-     * @return
-     */
-    @NonNull
-    public static int GetHour12(@NonNull Date date) {
-        return GetHour12(ToCalendar(date));
-    }
-
-    /**
-     * Return current minute.
-     *
-     * @return
-     */
-    public static int GetMinute() {
-        return GetMinute(Calendar.getInstance());
-    }
-
-    /**
-     * Return minute
-     *
-     * @param calendar
-     * @return
-     */
-    public static int GetMinute(@NonNull Calendar calendar) {
-        return calendar.get(Calendar.MINUTE);
-    }
-
-    /**
-     * Return minute
-     *
-     * @param date
-     * @return
-     */
-    public static int GetMinute(@NonNull Date date) {
-        return GetMinute(ToCalendar(date));
-    }
-
-    /**
-     * Return current second.
-     *
-     * @return
-     */
-    @NonNull
-    public static int GetSecond() {
-        return GetSecond(Calendar.getInstance());
-    }
-
-    /**
-     * Return second.
-     *
-     * @param calendar
-     * @return
-     */
-    @NonNull
-    public static int GetSecond(@NonNull Calendar calendar) {
-        return calendar.get(Calendar.SECOND);
-    }
-
-    /**
-     * Return second.
-     *
-     * @param date
-     * @return
-     */
-    @NonNull
-    public static int GetSecond(@NonNull Date date) {
-        return GetSecond(ToCalendar(date));
-    }
-
-    /**
-     * Return current milli second.
-     *
-     * @return
-     */
-    @NonNull
-    public static int GetMilliSecond() {
-        return GetMilliSecond(Calendar.getInstance());
-    }
-
-    /**
-     * Return milli second.
-     *
-     * @param calendar
-     * @return
-     */
-    @NonNull
-    public static int GetMilliSecond(@NonNull Calendar calendar) {
-        return calendar.get(Calendar.MILLISECOND);
-    }
-
-    /**
-     * Return milli second.
-     *
-     * @param date
-     * @return
-     */
-    @NonNull
-    public static int GetMilliSecond(@NonNull Date date) {
-        return GetMilliSecond(ToCalendar(date));
     }
 
     /**
@@ -378,7 +221,7 @@ public class TimeUtil {
     @NonNull
     public static int GetEndDayOfMonth(@NonNull Calendar calendar) {
         int year = GetYear(calendar);
-        int month = GetMonthForHuman(calendar);
+        int month = GetHumanMonth(calendar);
 
         return GetEndDayOfMonth(year, month);
     }
