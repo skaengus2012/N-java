@@ -263,7 +263,7 @@ public class TimeBuilder {
      * @return
      */
     @NonNull
-    public int GetMonthForHuman() {
+    public int getMonthForHuman() {
         return TimeUtil.GetMonthForHuman(calendar);
     }
 

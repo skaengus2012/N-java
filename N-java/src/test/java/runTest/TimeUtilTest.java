@@ -16,7 +16,7 @@ public class TimeUtilTest {
     @org.junit.Test
     public void runEndOfDayTest() {
         Calendar calendar = TimeUtil.GetCalendarEndDayOfMonth(2016, 2);
-        
+
         System.out.println(TimeUtil.GetMonth(calendar) + " " + TimeUtil.GetMonthForHuman(calendar));
     }
 
