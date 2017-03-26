@@ -75,7 +75,7 @@ public class TimeBuilder {
      */
     @NonNull
     public static TimeBuilder Create() {
-        return Create(Calendar.getInstance());
+        return Create(TimeUtil.GetCalendar());
     }
 
     /**
@@ -235,6 +235,96 @@ public class TimeBuilder {
     @NonNull
     public long getTime() {
         return getDate().getTime();
+    }
+
+    /**
+     * Return Year
+     *
+     * @return
+     */
+    @NonNull
+    public int getYear() {
+        return TimeUtil.GetYear(calendar);
+    }
+
+    /**
+     * Return month
+     *
+     * @return
+     */
+    @NonNull
+    public int getMonth() {
+        return TimeUtil.GetMonth(calendar);
+    }
+
+    /**
+     * Return human month (1-12)
+     *
+     * @return
+     */
+    @NonNull
+    public int GetMonthForHuman() {
+        return TimeUtil.GetMonthForHuman(calendar);
+    }
+
+    /**
+     * Return day.
+     *
+     * @return
+     */
+    @NonNull
+    public int getDay() {
+        return TimeUtil.GetDay(calendar);
+    }
+
+    /**
+     * Get hour 24 type
+     *
+     * @return
+     */
+    @NonNull
+    public int getHour24() {
+        return TimeUtil.GetHour24(calendar);
+    }
+
+    /**
+     * Get hour 12 type
+     *
+     * @return
+     */
+    @NonNull
+    public int getHour12() {
+        return TimeUtil.GetHour12(calendar);
+    }
+
+    /**
+     * get minute.
+     *
+     * @return
+     */
+    @NonNull
+    public int getMinute() {
+        return TimeUtil.GetMinute(calendar);
+    }
+
+    /**
+     * get second.
+     *
+     * @return
+     */
+    @NonNull
+    public int getSecond() {
+        return TimeUtil.GetSecond(calendar);
+    }
+
+    /**
+     * get milli second.
+     *
+     * @return
+     */
+    @NonNull
+    public int getMilliSecond() {
+        return TimeUtil.GetMilliSecond(calendar);
     }
 
     /**
