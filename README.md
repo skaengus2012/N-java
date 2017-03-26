@@ -255,6 +255,35 @@ TimeBuilder support all function using Builder pattern.<br/>
 Please reference next.<br/>
 
 ```java
+// simple java use.
+            
+String dateString = "2017-3-26 16:40";
+
+	try {
+                // parse.
+		Date formatData = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(dateString);
+
+                // calculating
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(formatData);
+                calendar.add(Calendar.YEAR, 1);
+                calendar.add(Calendar.MONTH, 5);
+                calendar.add(Calendar.DAY_OF_MONTH, -1);
+
+                // to yyMMdd
+                calendar.set(Calendar.HOUR_OF_DAY, 0);
+                calendar.set(Calendar.MINUTE, 0);
+                calendar.set(Calendar.SECOND, 0);
+                calendar.set(Calendar.MILLISECOND, 0);
+
+                System.out.println(new SimpleDateFormat("yyyy.MM.dd (hh,mm,ss a)", Locale.ENGLISH).format(calendar.getTime()));
+
+	} catch (ParseException e){
+		e.printStackTrace();
+	}
+
+
+// TimeBuilder use.
 TimeBuilder.Create("2017-3-26 16:40", "yyyy-MM-dd hh:mm").
                     addYear(1).
                     addMonth(5).
@@ -265,7 +294,8 @@ TimeBuilder.Create("2017-3-26 16:40", "yyyy-MM-dd hh:mm").
                     subscribe(System.out::println);
 		    
 // result
-// 2018.08.25 (12,00,00 PM)
+// 2018.08.25 (12,00,00 AM)
+// 2018.08.25 (12,00,00 AM)
 ```
 
 
