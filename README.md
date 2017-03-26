@@ -254,11 +254,12 @@ TimeBuilder support all function using Builder pattern.<br/>
 
 Please reference next.<br/>
 
-```java
-// simple java use.
-            
+```java            
 String dateString = "2017-3-26 16:40";
 
+{
+	// simple java use.
+	
 	try {
                 // parse.
 		Date formatData = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(dateString);
@@ -281,17 +282,19 @@ String dateString = "2017-3-26 16:40";
 	} catch (ParseException e){
 		e.printStackTrace();
 	}
+}
 
-
-// TimeBuilder use.
-TimeBuilder.Create("2017-3-26 16:40", "yyyy-MM-dd hh:mm").
-                    addYear(1).
-                    addMonth(5).
-                    addDay(-1).
-                    setLocale(Locale.ENGLISH).
-                    to_yyMMdd().
-                    getStringFormat("yyyy.MM.dd (hh,mm,ss a)").
-                    subscribe(System.out::println);
+{
+	// TimeBuilder use.
+	TimeBuilder.Create("2017-3-26 16:40", "yyyy-MM-dd hh:mm").
+			    addYear(1).
+			    addMonth(5).
+			    addDay(-1).
+			    setLocale(Locale.ENGLISH).
+			    to_yyMMdd().
+			    getStringFormat("yyyy.MM.dd (hh,mm,ss a)").
+			    subscribe(System.out::println);
+}
 		    
 // result
 // 2018.08.25 (12,00,00 AM)
