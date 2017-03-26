@@ -340,4 +340,13 @@ System.out.println(currentTimeBuilder.getHour24());
 System.out.println(currentTimeBuilder.getHour12());
 ```
 
+<H2>TimeUtil</H2>
+If you use only simple Calendar vo, please check TimeUtil. </br>
+There are many functions, which are used in TimeBuilder, in TimeUtil. </br>
+
+```java
+Calendar calendar = TimeUtil.GetCalendar();
+        
+System.out.println(TimeUtil.GetHour24(calendar));
+```
 
