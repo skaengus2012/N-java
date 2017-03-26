@@ -1,4 +1,4 @@
-package Njava.util.business;
+package Njava.util.time;
 
 import io.reactivex.Maybe;
 import io.reactivex.annotations.NonNull;
@@ -168,6 +168,36 @@ public class TimeUtil {
     }
 
     /**
+     * Return First Calendar of Month.
+     *
+     * @param year
+     * @param month
+     * @return
+     */
+    @NonNull
+    public static Calendar GetCalendarStartDayOfMonth(@NonNull int year, @NonNull int month) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, 1);
+
+        return calendar;
+    }
+
+    /**
+     * Return End Calendar of Month.
+     *
+     * @param year
+     * @param month
+     * @return
+     */
+    @NonNull
+    public static Calendar GetCalendarEndDayOfMonth(@NonNull int year, @NonNull int month) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, 0);
+
+        return calendar;
+    }
+
+    /**
      * Return end day of month.
      *
      * @param year
@@ -179,7 +209,7 @@ public class TimeUtil {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, 0);
 
-        return GetDay(calendar);
+        return GetDay(GetCalendarEndDayOfMonth(year, month));
     }
 
     /**
@@ -233,6 +263,7 @@ public class TimeUtil {
         result.setTime(calendar.getTime());
 
         result.set(Calendar.HOUR, 0);
+        result.set(Calendar.MINUTE, 0);
         result.set(Calendar.SECOND, 0);
         result.set(Calendar.MILLISECOND, 0);
 
@@ -263,8 +294,22 @@ public class TimeUtil {
      */
     @NonNull
     public static Maybe<Date> ParseDate(@NonNull String dateString, @NonNull String format) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+        return ParseDate(dateString, new SimpleDateFormat(format));
+    }
 
+    /**
+     * Return Date by String.
+     *
+     * <pre>
+     *  The Result managed by Maybe. Because I wanna manage parse with out Null & Exception.
+     * </pre>
+     *
+     * @param dateString
+     * @param simpleDateFormat
+     * @return
+     */
+    @NonNull
+    public static Maybe<Date> ParseDate(@NonNull String dateString, @NonNull SimpleDateFormat simpleDateFormat) {
         try {
             return Maybe.just(simpleDateFormat.parse(dateString));
         } catch (Exception e) {
@@ -273,7 +318,7 @@ public class TimeUtil {
     }
 
     /**
-     * Return String by String.
+     * Return String by Date.
      *
      * <pre>
      *  The Result managed by Maybe. Because I wanna manage parse with out Null & Exception.
@@ -285,8 +330,22 @@ public class TimeUtil {
      */
     @NonNull
     public static Maybe<String> ParseString(@NonNull Date date, @NonNull String format) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+        return ParseString(date, new SimpleDateFormat(format));
+    }
 
+    /**
+     * Return String by Date.
+     *
+     * <pre>
+     *  The Result managed by Maybe. Because I wanna manage parse with out Null & Exception.
+     * </pre>
+     *
+     * @param date
+     * @param simpleDateFormat
+     * @return
+     */
+    @NonNull
+    public static Maybe<String> ParseString(@NonNull Date date, @NonNull SimpleDateFormat simpleDateFormat) {
         try {
             return Maybe.just(simpleDateFormat.format(date));
         } catch (Exception e) {

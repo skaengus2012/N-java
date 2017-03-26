@@ -1,7 +1,8 @@
 package runTest;
 
 import Njava.function.exceptionLambda.IExConsumer;
-import Njava.util.business.TimeUtil;
+import Njava.util.time.TimeBuilder;
+import Njava.util.time.TimeUtil;
 import io.reactivex.annotations.NonNull;
 
 import java.util.Date;
@@ -29,5 +30,19 @@ public class TimeUtilTest {
                 });
             }
         });
+    }
+
+    @org.junit.Test
+    public void runTimeBuilderTest() {
+        TimeBuilder.Create("2016.12.12", "yyyy.MM.dd").
+                endDayOfMonth().to_yyMMdd().
+                getStringFormat("yyyy-MM-dd hh:mm:ss a").subscribe(new IExConsumer<String>() {
+            @Override
+            public void accept(@NonNull String s) throws Exception {
+                 System.out.println(s);
+            }
+        });
+
+
     }
 }
