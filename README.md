@@ -246,6 +246,7 @@ TimeBuilder dateBuilder = TimeBuilder.Create(new Date());
 // param : string, format
 TimeBuilder stringBuilder = TimeBuilder.Create("2017-3-26", "yyyy-MM-dd");
 ```
+
 <H2>Calculating Time</H2>
 We some calculate time. For Example, Add month, year ... Or We want to remain "yyMMdd" data.<br/>
 TimeBuilder support all function using Builder pattern.<br/>
