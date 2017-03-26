@@ -20,7 +20,7 @@ allprojects {
 <B>STEP2</B> : Add the dependency:<br/>
 ```gradle
 dependencies {
-    compile 'com.github.skaengus2012:N-java:0.0.6.2-alpha'
+    compile 'com.github.skaengus2012:N-java:0.1.0-beta'
 }
 ```
 
@@ -39,7 +39,7 @@ Add it your pom.xml at your project.
 <dependency>
    <groupId>com.github.skaengus2012</groupId>
    <artifactId>N-java</artifactId>
-   <version>0.0.6.2-alpha</version>
+   <version>0.1.0-beta</version>
 </dependency>
 ```
 
@@ -223,5 +223,48 @@ StringUtil.ParseBoolean("false").subscribe(System.out::println);
 // Parse Double
 StringUtil.ParseDouble("0.0111111").subscribe(System.out::println);
 ```
+
+# TimeUtil & TimeBuilder
+
+I support Time-related class likes Calendar, Date. <br/>
+I felt some discomfortable while I used Date or Calendar class, Espeicially dateformatting & calculating date is so unconvenience.<br/><br/>
+
+So I suggest TimeBuilder. <br/>
+Please reference next.
+
+<H2>Create TimeBuilder</H2>
+```java
+// non-param : current time.
+TimeBuilder currentTimeBuilder = TimeBuilder.Create();
+
+// param : Calendar.
+TimeBuilder calendarBuilder = TimeBuilder.Create(TimeUtil.GetCalendar());
+
+// param : date
+TimeBuilder dateBuilder = TimeBuilder.Create(new Date());
+
+// param : string, format
+TimeBuilder stringBuilder = TimeBuilder.Create("2017-3-26", "yyyy-MM-dd");
+```
+<H2>Calculating Time</H2>
+We some calculate time. For Example, Add month, year ... Or We want to remain "yyMMdd" data.<br/>
+TimeBuilder support all function using Builder pattern.<br/>
+
+Please reference next.<br/>
+
+```java
+TimeBuilder.Create("2017-3-26 16:40", "yyyy-MM-dd hh:mm").
+                    addYear(1).
+                    addMonth(5).
+                    addDay(-1).
+                    setLocale(Locale.ENGLISH).
+                    to_yyMMdd().
+                    getStringFormat("yyyy.MM.dd (hh,mm,ss a)").
+                    subscribe(System.out::println);
+		    
+// result
+// 2018.08.25 (12,00,00 PM)
+```
+
 
 
