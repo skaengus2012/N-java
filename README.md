@@ -249,7 +249,8 @@ TimeBuilder stringBuilder = TimeBuilder.Create("2017-3-26", "yyyy-MM-dd");
 ```
 
 <H2>Calculating Time</H2>
-We some calculate time. For Example, Add month, year ... Or We want to remain "yyMMdd" data.<br/>
+We some calculate time. </br>
+For Example, <B>Add</B> month, year ... or We want to remain <B>"yyMMdd"</B> data.<br/>
 TimeBuilder support all function using Builder pattern.<br/>
 
 Please reference next.<br/>
@@ -301,5 +302,42 @@ String dateString = "2017-3-26 16:40";
 // 2018.08.25 (12,00,00 AM)
 ```
 
+Please notice, getStringFormat return type is <B>Maybe</B>, which is api in Rxjava2.<br/>
+If format crushed while parsing, Maybe will be retrun empty.<br/>
+I wanna free in Exception, null pointer.<br/>
+
+<H2>So various return type</H2>
+
+TimeBuilder return so various return. <br/>
+For example, that returns Calendar, Date, long(milli second), month for human, year and etc.<br/>
+Please check library.
+
+```java
+TimeBuilder currentTimeBuilder = TimeBuilder.Create();
+
+// return calendar.
+System.out.println(currentTimeBuilder.getCalendar());
+
+// return date.
+System.out.println(currentTimeBuilder.getDate());
+
+// return milli second.
+System.out.println(currentTimeBuilder.getTime());
+
+// return year.
+System.out.println(currentTimeBuilder.getYear());
+
+// return month (0-11).
+System.out.println(currentTimeBuilder.getMonth());
+
+// return month for human (1-12).
+System.out.println(currentTimeBuilder.getMonthForHuman());
+
+// return hour 24 type
+System.out.println(currentTimeBuilder.getHour24());
+
+// return hour 12 type
+System.out.println(currentTimeBuilder.getHour12());
+```
 
 
