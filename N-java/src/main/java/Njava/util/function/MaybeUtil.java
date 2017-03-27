@@ -1,6 +1,8 @@
 package Njava.util.function;
 
 import Njava.function.exceptionLambda.IExConsumer;
+import Njava.function.exceptionLambda.IExFunction;
+import Njava.modeler.NxModeler;
 import io.reactivex.Maybe;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.annotations.Nullable;
@@ -78,5 +80,30 @@ public class MaybeUtil {
                 }
             }
         });
+    }
+
+    /**
+     * Equals check in Maybe.
+     *
+     * @param m1
+     * @param m2
+     * @return
+     */
+    public static boolean Equals(@NonNull final Maybe<? extends Object> m1, @NonNull final Maybe<? extends Object> m2) {
+        NxModeler.NullCheck(m1);
+        NxModeler.NullCheck(m2);
+
+        return m1.flatMap(new IExFunction<Object, Maybe<Boolean>>(){
+                                @Override
+                                public Maybe<Boolean> apply(@NonNull final Object o1) throws Exception {
+                                    return m2.map(new IExFunction<Object, Boolean>(){
+                                                @Override
+                                                public Boolean apply(@NonNull Object o2) throws Exception {
+                                                    return o1.equals(o2);
+                                                }
+                                            });
+                                }
+                }).
+                blockingGet(false);
     }
 }
