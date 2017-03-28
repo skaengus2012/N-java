@@ -17,5 +17,7 @@ public class MaybeUtilTest {
 
         System.out.println(maybe1.equals(maybe2));
         System.out.println(MaybeUtil.Equals(maybe1, maybe2));
+
+        System.out.println(MaybeUtil.IsEmpty(maybe2));
     }
 }

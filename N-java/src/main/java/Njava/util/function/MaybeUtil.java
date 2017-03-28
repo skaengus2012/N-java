@@ -7,6 +7,8 @@ import io.reactivex.Maybe;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.annotations.Nullable;
 
+import java.util.Objects;
+
 /**
  * Rx Maybe Support.
  * <p>
@@ -80,6 +82,18 @@ public class MaybeUtil {
                 }
             }
         });
+    }
+
+    /**
+     * Check empty.
+     *
+     * @param maybe
+     * @return
+     */
+    public static boolean IsEmpty(@NonNull Maybe<? extends Object> maybe) {
+        NxModeler.NullCheck(maybe);
+
+        return maybe.isEmpty().blockingGet();
     }
 
     /**

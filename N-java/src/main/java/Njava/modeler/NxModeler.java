@@ -3,6 +3,8 @@ package Njava.modeler;
 import Njava.function.ISupplier;
 import Njava.util.business.ContainerUtil;
 import Njava.util.business.StringUtil;
+import Njava.util.function.MaybeUtil;
+import io.reactivex.Maybe;
 import io.reactivex.annotations.NonNull;
 
 import java.util.Collection;
@@ -42,6 +44,17 @@ public class NxModeler {
      */
     public final static void NullCheck(Object obj) {
         if (obj == null) {
+            throw new RuntimeException(ERROR_BAD_ASSESS);
+        }
+    }
+
+    /**
+     * Description : maybe empty check.
+     *
+     * @param maybe
+     */
+    public final static void EmptyMaybeCheck(Maybe<? extends Object> maybe) {
+        if (MaybeUtil.IsEmpty(maybe)) {
             throw new RuntimeException(ERROR_BAD_ASSESS);
         }
     }
