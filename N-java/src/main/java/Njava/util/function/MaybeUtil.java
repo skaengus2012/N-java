@@ -7,7 +7,7 @@ import io.reactivex.Maybe;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.annotations.Nullable;
 
-import java.util.Objects;
+import java.util.Comparator;
 
 /**
  * Rx Maybe Support.
@@ -139,6 +139,37 @@ public class MaybeUtil {
                             @Override
                             public Integer apply(@NonNull Comparable o2) throws Exception {
                                 return o1.compareTo(o2);
+                            }
+                        });
+                    }
+                }).
+                blockingGet(0);
+    }
+
+    /**
+     * Maybe compareTo use (with Comparator).
+     *
+     * @param m1
+     * @param m2
+     * @param comparator
+     * @param <T>
+     * @return
+     */
+    public static <T> int CompareTo(
+            @NonNull final Maybe<? extends T> m1
+            , @NonNull final Maybe<? extends T> m2
+            , @NonNull final Comparator<T> comparator) {
+        NxModeler.NullCheck(m1);
+        NxModeler.NullCheck(m2);
+        NxModeler.NullCheck(comparator);
+
+        return m1.flatMap(new IExFunction<T, Maybe<Integer>>(){
+                    @Override
+                    public Maybe<Integer> apply(@NonNull final T o1) throws Exception {
+                        return m2.map(new IExFunction<T, Integer>(){
+                            @Override
+                            public Integer apply(@NonNull T o2) throws Exception {
+                                return comparator.compare(o1, o2);
                             }
                         });
                     }
