@@ -120,4 +120,29 @@ public class MaybeUtil {
                 }).
                 blockingGet(false);
     }
+
+    /**
+     * Maybe compareTo use.
+     *
+     * @param m1
+     * @param m2
+     * @return
+     */
+    public static int CompareTo(@NonNull final Maybe<? extends Comparable> m1, @NonNull final Maybe<? extends Comparable> m2) {
+        NxModeler.NullCheck(m1);
+        NxModeler.NullCheck(m2);
+
+        return m1.flatMap(new IExFunction<Comparable, Maybe<Integer>>(){
+                    @Override
+                    public Maybe<Integer> apply(@NonNull final Comparable o1) throws Exception {
+                        return m2.map(new IExFunction<Comparable, Integer>(){
+                            @Override
+                            public Integer apply(@NonNull Comparable o2) throws Exception {
+                                return o1.compareTo(o2);
+                            }
+                        });
+                    }
+                }).
+                blockingGet(0);
+    }
 }
