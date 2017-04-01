@@ -41,6 +41,21 @@ public class FileUtil {
     }
 
     /**
+     * 파일을 삭제한다.
+     *
+     * @param filePath
+     */
+    public static void DeleteFile(@NonNull String filePath) {
+        NxModeler.NullCheck(filePath);
+
+        File file = new File(filePath);
+
+        if (file.exists()) {
+            file.delete();
+        }
+    }
+
+    /**
      * 파일을 Copy 한다.
      *
      * @param inFileName

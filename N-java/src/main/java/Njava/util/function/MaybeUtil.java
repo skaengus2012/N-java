@@ -1,5 +1,6 @@
 package Njava.util.function;
 
+import Njava.function.ISupplier;
 import Njava.function.exceptionLambda.IExConsumer;
 import Njava.function.exceptionLambda.IExFunction;
 import Njava.modeler.NxModeler;
@@ -82,6 +83,22 @@ public class MaybeUtil {
                 }
             }
         });
+    }
+
+    /**
+     * Get with defaultValueSupplier
+     *
+     * @param maybe
+     * @param defaultValueSupplier
+     * @param <T>
+     * @return
+     */
+    public static <T> T BlockingGet(@NonNull Maybe<T> maybe, @NonNull ISupplier<T> defaultValueSupplier){
+        if (MaybeUtil.IsEmpty(maybe)) {
+            return defaultValueSupplier.accept();
+        } else {
+            return maybe.blockingGet();
+        }
     }
 
     /**
