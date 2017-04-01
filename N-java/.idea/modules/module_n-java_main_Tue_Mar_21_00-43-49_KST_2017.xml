@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_n-java_main" default="compile.module.n-java_main">
+  <dirname property="module.n-java_main.basedir" file="${ant.file.module_n-java_main}"/>
+  
+  <property name="module.jdk.home.n-java_main" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.n-java_main" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.n-java_main" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.n-java_main" value="-encoding UTF-8 -source 1.7 -target 1.8 ${compiler.args}"/>
+  
+  <property name="n-java_main.output.dir" value="${module.n-java_main.basedir}/../../build/classes/main"/>
+  <property name="n-java_main.testoutput.dir" value="${module.n-java_main.basedir}/../../build/classes/main"/>
+  
+  <path id="n-java_main.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="n-java_main.module.production.classpath">
+    <path refid="${module.jdk.classpath.n-java_main}"/>
+    <path refid="library.gradle:_io.reactivex.rxjava2:rxjava:2.0.7.classpath"/>
+    <path refid="library.gradle:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+  </path>
+  
+  <path id="n-java_main.runtime.production.module.classpath">
+    <pathelement location="${n-java_main.output.dir}"/>
+    <path refid="library.gradle:_io.reactivex.rxjava2:rxjava:2.0.7.classpath"/>
+    <path refid="library.gradle:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+  </path>
+  
+  <path id="n-java_main.module.classpath">
+    <path refid="${module.jdk.classpath.n-java_main}"/>
+    <pathelement location="${n-java_main.output.dir}"/>
+    <path refid="library.gradle:_io.reactivex.rxjava2:rxjava:2.0.7.classpath"/>
+    <path refid="library.gradle:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+  </path>
+  
+  <path id="n-java_main.runtime.module.classpath">
+    <pathelement location="${n-java_main.output.dir}"/>
+    <path refid="library.gradle:_io.reactivex.rxjava2:rxjava:2.0.7.classpath"/>
+    <path refid="library.gradle:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.n-java_main">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.n-java_main">
+    <patternset refid="excluded.from.module.n-java_main"/>
+  </patternset>
+  
+  <path id="n-java_main.module.sourcepath">
+    <dirset dir="${module.n-java_main.basedir}/../../src/main">
+      <include name="java"/>
+      <include name="resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.n-java_main" depends="compile.module.n-java_main.production,compile.module.n-java_main.tests" description="Compile module N-java_main"/>
+  
+  <target name="compile.module.n-java_main.production" depends="register.custom.compilers" description="Compile module N-java_main; production classes">
+    <mkdir dir="${n-java_main.output.dir}"/>
+    <javac2 destdir="${n-java_main.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.n-java_main}/javac">
+      <compilerarg line="${compiler.args.n-java_main}"/>
+      <bootclasspath refid="n-java_main.module.bootclasspath"/>
+      <classpath refid="n-java_main.module.production.classpath"/>
+      <src refid="n-java_main.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.n-java_main"/>
+    </javac2>
+    
+    <copy todir="${n-java_main.output.dir}">
+      <fileset dir="${module.n-java_main.basedir}/../../src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.n-java_main.basedir}/../../src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.n-java_main.tests" depends="register.custom.compilers,compile.module.n-java_main.production" description="compile module N-java_main; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.n-java_main" description="cleanup module">
+    <delete dir="${n-java_main.output.dir}"/>
+    <delete dir="${n-java_main.testoutput.dir}"/>
+  </target>
+</project>

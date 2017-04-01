@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_n-java_test" default="compile.module.n-java_test">
+  <dirname property="module.n-java_test.basedir" file="${ant.file.module_n-java_test}"/>
+  
+  <property name="module.jdk.home.n-java_test" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.n-java_test" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.n-java_test" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.n-java_test" value="-encoding UTF-8 -source 1.7 -target 1.8 ${compiler.args}"/>
+  
+  <property name="n-java_test.output.dir" value="undefined"/>
+  <property name="n-java_test.testoutput.dir" value="${module.n-java_test.basedir}/../../build/classes/test"/>
+  
+  <path id="n-java_test.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="n-java_test.module.production.classpath">
+    <path refid="${module.jdk.classpath.n-java_test}"/>
+    <pathelement location="${n-java_main.output.dir}"/>
+    <path refid="library.gradle:_io.reactivex.rxjava2:rxjava:2.0.7.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.11.classpath"/>
+    <path refid="library.gradle:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  <path id="n-java_test.runtime.production.module.classpath">
+    <path refid="n-java_main.runtime.production.module.classpath"/>
+    <path refid="library.gradle:_io.reactivex.rxjava2:rxjava:2.0.7.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.11.classpath"/>
+    <path refid="library.gradle:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  <path id="n-java_test.module.classpath">
+    <path refid="${module.jdk.classpath.n-java_test}"/>
+    <pathelement location="${n-java_main.output.dir}"/>
+    <path refid="library.gradle:_io.reactivex.rxjava2:rxjava:2.0.7.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.11.classpath"/>
+    <path refid="library.gradle:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  <path id="n-java_test.runtime.module.classpath">
+    <pathelement location="${n-java_test.testoutput.dir}"/>
+    <path refid="n-java_main.runtime.module.classpath"/>
+    <path refid="library.gradle:_io.reactivex.rxjava2:rxjava:2.0.7.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.11.classpath"/>
+    <path refid="library.gradle:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.n-java_test">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.n-java_test">
+    <patternset refid="excluded.from.module.n-java_test"/>
+  </patternset>
+  
+  <path id="n-java_test.module.test.sourcepath">
+    <dirset dir="${module.n-java_test.basedir}/../../src/test">
+      <include name="java"/>
+      <include name="resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.n-java_test" depends="compile.module.n-java_test.production,compile.module.n-java_test.tests" description="Compile module N-java_test"/>
+  
+  <target name="compile.module.n-java_test.production" depends="register.custom.compilers,compile.module.n-java_main" description="Compile module N-java_test; production classes"/>
+  
+  <target name="compile.module.n-java_test.tests" depends="register.custom.compilers,compile.module.n-java_test.production" description="compile module N-java_test; test classes" unless="skip.tests">
+    <mkdir dir="${n-java_test.testoutput.dir}"/>
+    <javac2 destdir="${n-java_test.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.n-java_test}/javac">
+      <compilerarg line="${compiler.args.n-java_test}"/>
+      <bootclasspath refid="n-java_test.module.bootclasspath"/>
+      <classpath refid="n-java_test.module.classpath"/>
+      <src refid="n-java_test.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.n-java_test"/>
+    </javac2>
+    
+    <copy todir="${n-java_test.testoutput.dir}">
+      <fileset dir="${module.n-java_test.basedir}/../../src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.n-java_test.basedir}/../../src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.n-java_test" description="cleanup module">
+    <delete dir="${n-java_test.output.dir}"/>
+    <delete dir="${n-java_test.testoutput.dir}"/>
+  </target>
+</project>
