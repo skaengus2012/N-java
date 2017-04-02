@@ -14,7 +14,7 @@ import java.util.Locale;
  *
  * Created by Doohyun on 2017. 3. 26..
  */
-public class TimeBuilder {
+public final class TimeBuilder {
 
     private Calendar calendar;
     private Locale locale = Locale.getDefault();
