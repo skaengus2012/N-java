@@ -3,6 +3,7 @@ package runTest;
 import Njava.function.exceptionLambda.IExConsumer;
 import Njava.util.time.TimeBuilder;
 import Njava.util.time.TimeUtil;
+import Njava.util.time.duration.Duration;
 import io.reactivex.annotations.NonNull;
 
 import java.util.Calendar;
@@ -82,5 +83,23 @@ public class TimeUtilTest {
 
 
        System.out.println(time);
+    }
+
+    @org.junit.Test
+    public void runDurationTest() {
+
+        Duration duration = TimeBuilder.Create(2017, 12, 28).toDuration();
+
+        System.out.println(duration.toDayOfMonth());
+        System.out.println(duration.toHour());
+        System.out.println(duration.toMinute());
+        System.out.println(duration.toSecond());
+
+        System.out.println(duration.toMonth());
+        System.out.println(duration.toAbsolute().toMonth());
+
+        System.out.println(duration.toYear());
+        System.out.println(duration.toAbsolute().toYear());
+       // System.out.println(duration.toAbsolute().getDifferenceYear());
     }
 }

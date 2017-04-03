@@ -1,21 +1,19 @@
 package Njava.util.time;
 
 import Njava.util.function.MaybeUtil;
+import Njava.util.time.duration.Duration;
 import io.reactivex.Maybe;
 import io.reactivex.annotations.NonNull;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * Manage calendar using Builder.
  *
  * Created by Doohyun on 2017. 3. 26..
  */
-public final class TimeBuilder {
+public final class TimeBuilder implements Comparable<TimeBuilder>{
 
     private Calendar calendar;
     private Locale locale = Locale.getDefault();
@@ -32,7 +30,7 @@ public final class TimeBuilder {
 
         timeBuilder.calendar = calendar;
 
-        return timeBuilder;
+        return timeBuilder.to_yyMMdd();
     }
 
     /**
@@ -522,8 +520,78 @@ public final class TimeBuilder {
         return TimeUtil.ParseString(getDate(), new SimpleDateFormat(format, locale));
     }
 
+    /**
+     * Convert duration (with TimeBuilder)
+     *
+     * @param timeBuilder
+     * @return
+     */
+    @NonNull
+    public Duration toDuration(@NonNull TimeBuilder timeBuilder) {
+        return Duration.Create(this, timeBuilder);
+    }
+
+    /**
+     * Convert duration (with Calendar)
+     *
+     * @param calendar
+     * @return
+     */
+    @NonNull
+    public Duration toDuration(@NonNull Calendar calendar) {
+        return Duration.Create(this, TimeBuilder.Create(calendar));
+    }
+
+    /**
+     * Convert duration (with Date)
+     *
+     * @param date
+     * @return
+     */
+    @NonNull
+    public Duration toDuration(@NonNull Date date) {
+        return Duration.Create(this, TimeBuilder.Create(date));
+    }
+
+    /**
+     * Convert duration (with DateFormat)
+     *
+     * @param dateString
+     * @param format
+     * @return
+     */
+    @NonNull
+    public Duration toDuration(@NonNull String dateString, @NonNull String format) {
+        return Duration.Create(this, TimeBuilder.Create(dateString, format));
+    }
+
+    /**
+     * Convert duration (with current time)
+     *
+     * @return
+     */
+    @NonNull
+    public Duration toDuration() {
+        return Duration.Create(this, TimeBuilder.Create());
+    }
+
+    /**
+     *
+     * @return
+     */
     @NonNull
     public String toString(){
         return calendar.toString();
+    }
+
+    /**
+     * Compare TimeBuilder
+     *
+     * @param o
+     * @return
+     */
+    @Override
+    public int compareTo(TimeBuilder o) {
+        return getDate().compareTo(o.getDate());
     }
 }
