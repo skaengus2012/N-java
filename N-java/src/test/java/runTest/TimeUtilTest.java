@@ -4,6 +4,7 @@ import Njava.function.exceptionLambda.IExConsumer;
 import Njava.util.time.TimeBuilder;
 import Njava.util.time.TimeUtil;
 import io.reactivex.annotations.NonNull;
+import org.junit.*;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -58,6 +59,16 @@ public class TimeUtilTest {
             @Override
             public void accept(@NonNull String s) throws Exception {
                 System.out.println(s);
+            }
+        });
+    }
+
+    @org.junit.Test
+    public void runWith() {
+        TimeBuilder.Create(2017, 1, 31).withYear(2000).withMonth(2).getStringFormat("yyyy. MM. dd").subscribe(new IExConsumer<String>() {
+            @Override
+            public void accept(@NonNull String string) throws Exception {
+                System.out.println(string);
             }
         });
     }

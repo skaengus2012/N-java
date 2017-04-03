@@ -21,6 +21,19 @@ public final class TimeBuilder {
 
     private TimeBuilder(){}
 
+    public static TimeBuilder Create(@NonNull Integer year, @NonNull Integer humanMonth, @NonNull Integer dayOfMonth) {
+        TimeBuilder timeBuilder = new TimeBuilder();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, humanMonth - 1);
+        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        timeBuilder.calendar = calendar;
+
+        return timeBuilder;
+    }
+
     /**
      * Create TimeBuilder
      *
@@ -126,6 +139,45 @@ public final class TimeBuilder {
     public TimeBuilder endDayOfMonth() {
         TimeBuilder copy = getCopyObject();
         copy.calendar = TimeUtil.GetCalendarEndDayOfMonth(TimeUtil.GetYear(calendar), TimeUtil.GetMonthForHuman(calendar));
+
+        return copy;
+    }
+
+    /**
+     * Setting Year
+     *
+     * @param year
+     * @return
+     */
+    public TimeBuilder withYear(@NonNull int year) {
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.set(Calendar.YEAR, year);
+
+        return copy;
+    }
+
+    /**
+     * Setting month
+     *
+     * @param humanMonth
+     * @return
+     */
+    public TimeBuilder withMonth(@NonNull int humanMonth) {
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.set(Calendar.MONTH, humanMonth - 1);
+
+        return copy;
+    }
+
+    /**
+     * Setting day of month
+     *
+     * @param dayOfMonth
+     * @return
+     */
+    public TimeBuilder withDayOfMonth(@NonNull int dayOfMonth) {
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
         return copy;
     }
@@ -365,5 +417,10 @@ public final class TimeBuilder {
     @NonNull
     public Maybe<String> getStringFormat(String format) {
         return TimeUtil.ParseString(getDate(), new SimpleDateFormat(format, locale));
+    }
+
+    @NonNull
+    public String toString(){
+        return calendar.toString();
     }
 }
