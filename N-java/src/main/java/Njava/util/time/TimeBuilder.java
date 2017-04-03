@@ -79,6 +79,19 @@ public final class TimeBuilder {
     }
 
     /**
+     * Deep-copy.
+     *
+     * @return
+     */
+    public final TimeBuilder getCopyObject() {
+        TimeBuilder newTimeBuilder = new TimeBuilder();
+        newTimeBuilder.calendar = calendar;
+        newTimeBuilder.locale = locale;
+
+        return newTimeBuilder;
+    }
+
+    /**
      * setting locale.
      *
      * @param locale
@@ -86,9 +99,10 @@ public final class TimeBuilder {
      */
     @NonNull
     public TimeBuilder setLocale(@NonNull Locale locale) {
-        this.locale = locale;
+        TimeBuilder copy = getCopyObject();
+        copy.locale = locale;
 
-        return this;
+        return copy;
     }
 
     /**
@@ -96,10 +110,12 @@ public final class TimeBuilder {
      *
      * @return
      */
+    @NonNull
     public TimeBuilder firstDayOfMonth() {
-        calendar = TimeUtil.GetCalendarStartDayOfMonth(TimeUtil.GetYear(calendar), TimeUtil.GetMonthForHuman(calendar));
+        TimeBuilder copy = getCopyObject();
+        copy.calendar = TimeUtil.GetCalendarStartDayOfMonth(TimeUtil.GetYear(calendar), TimeUtil.GetMonthForHuman(calendar));
 
-        return this;
+        return copy;
     }
 
     /**
@@ -108,9 +124,10 @@ public final class TimeBuilder {
      * @return
      */
     public TimeBuilder endDayOfMonth() {
-        calendar = TimeUtil.GetCalendarEndDayOfMonth(TimeUtil.GetYear(calendar), TimeUtil.GetMonthForHuman(calendar));
+        TimeBuilder copy = getCopyObject();
+        copy.calendar = TimeUtil.GetCalendarEndDayOfMonth(TimeUtil.GetYear(calendar), TimeUtil.GetMonthForHuman(calendar));
 
-        return this;
+        return copy;
     }
 
     /**
@@ -121,8 +138,10 @@ public final class TimeBuilder {
      */
     @NonNull
     public TimeBuilder addYear(@NonNull int year) {
-        calendar.add(Calendar.YEAR, year);
-        return this;
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.add(Calendar.YEAR, year);
+
+        return copy;
     }
 
     /**
@@ -133,8 +152,10 @@ public final class TimeBuilder {
      */
     @NonNull
     public TimeBuilder addMonth(@NonNull int month) {
-        calendar.add(Calendar.MONTH, month);
-        return this;
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.add(Calendar.MONTH, month);
+
+        return copy;
     }
 
     /**
@@ -145,8 +166,10 @@ public final class TimeBuilder {
      */
     @NonNull
     public TimeBuilder addDay(@NonNull int day) {
-        calendar.add(Calendar.DAY_OF_MONTH, day);
-        return this;
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.add(Calendar.DAY_OF_MONTH, day);
+
+        return copy;
     }
 
     /**
@@ -156,8 +179,10 @@ public final class TimeBuilder {
      * @return
      */
     public TimeBuilder addHour(@NonNull int hour) {
-        calendar.add(Calendar.HOUR_OF_DAY, hour);
-        return this;
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.add(Calendar.HOUR_OF_DAY, hour);
+
+        return copy;
     }
 
     /**
@@ -167,9 +192,10 @@ public final class TimeBuilder {
      * @return
      */
     public TimeBuilder addMinute(@NonNull int minute) {
-        calendar.add(Calendar.MINUTE, minute);
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.add(Calendar.MINUTE, minute);
 
-        return this;
+        return copy;
     }
 
     /**
@@ -179,9 +205,10 @@ public final class TimeBuilder {
      * @return
      */
     public TimeBuilder addSecond(@NonNull int second) {
-        calendar.add(Calendar.SECOND, second);
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.add(Calendar.SECOND, second);
 
-        return this;
+        return copy;
     }
 
     /**
@@ -191,9 +218,10 @@ public final class TimeBuilder {
      * @return
      */
     public TimeBuilder addMilliSecond(@NonNull int millisecond) {
-        calendar.add(Calendar.MILLISECOND, millisecond);
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.add(Calendar.MILLISECOND, millisecond);
 
-        return this;
+        return copy;
     }
 
     /**
@@ -202,9 +230,10 @@ public final class TimeBuilder {
      * @return
      */
     public TimeBuilder to_yyMMdd() {
-        calendar = TimeUtil.To_yyMMdd(calendar);
+        TimeBuilder copy = getCopyObject();
+        copy.calendar = TimeUtil.To_yyMMdd(calendar);
 
-        return this;
+        return copy;
     }
 
     /**
