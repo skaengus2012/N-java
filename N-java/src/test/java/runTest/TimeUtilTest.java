@@ -4,7 +4,6 @@ import Njava.function.exceptionLambda.IExConsumer;
 import Njava.util.time.TimeBuilder;
 import Njava.util.time.TimeUtil;
 import io.reactivex.annotations.NonNull;
-import org.junit.*;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -71,5 +70,17 @@ public class TimeUtilTest {
                 System.out.println(string);
             }
         });
+
+       long time =  TimeBuilder.Create().withHour(10).withMinute(0).withSecond(100).withMilliSecond(0).getTime();
+
+       TimeBuilder.Create(new Date(time)).getStringFormat("yyyy.MM.dd hh.mm.ss").subscribe(new IExConsumer<String>() {
+           @Override
+           public void accept(@NonNull String s) throws Exception {
+               System.out.println(s);
+           }
+       });
+
+
+       System.out.println(time);
     }
 }

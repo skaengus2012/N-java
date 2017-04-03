@@ -183,6 +183,58 @@ public final class TimeBuilder {
     }
 
     /**
+     * Setting hour of day.
+     *
+     * @param hour
+     * @return
+     */
+    public TimeBuilder withHour(@NonNull int hour) {
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.set(Calendar.HOUR_OF_DAY, hour);
+
+        return copy;
+    }
+
+    /**
+     * Setting minute.
+     *
+     * @param minute
+     * @return
+     */
+    public TimeBuilder withMinute(@NonNull int minute) {
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.set(Calendar.MINUTE, minute);
+
+        return copy;
+    }
+
+    /**
+     * Setting second.
+     *
+     * @param second
+     * @return
+     */
+    public TimeBuilder withSecond(@NonNull int second) {
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.set(Calendar.SECOND, second);
+
+        return copy;
+    }
+
+    /**
+     * Setting milliSecond.
+     *
+     * @param milliSecond
+     * @return
+     */
+    public TimeBuilder withMilliSecond(@NonNull int milliSecond) {
+        TimeBuilder copy = getCopyObject();
+        copy.calendar.set(Calendar.MILLISECOND, milliSecond);
+
+        return copy;
+    }
+
+    /**
      * Create year +- year value.
      *
      * @param year
