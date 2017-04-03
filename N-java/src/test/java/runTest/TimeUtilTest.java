@@ -64,16 +64,16 @@ public class TimeUtilTest {
 
     @org.junit.Test
     public void runWith() {
-        TimeBuilder.Create(2017, 1, 31).withYear(2000).withMonth(2).getStringFormat("yyyy. MM. dd").subscribe(new IExConsumer<String>() {
+        TimeBuilder.Create(2017, 12, 28).withYear(2000).withMonth(2).getStringFormat("yyyy. MM. dd").subscribe(new IExConsumer<String>() {
             @Override
             public void accept(@NonNull String string) throws Exception {
                 System.out.println(string);
             }
         });
 
-       long time =  TimeBuilder.Create().withHour(10).withMinute(0).withSecond(100).withMilliSecond(0).getTime();
+       long time =  TimeBuilder.Create().to_yyMMdd().withTime(0, 0, 0).withMilliSecond(0).getTime();
 
-       TimeBuilder.Create(new Date(time)).getStringFormat("yyyy.MM.dd hh.mm.ss").subscribe(new IExConsumer<String>() {
+       TimeBuilder.Create(new Date(time)).getStringFormat("yyyy.MM.dd hh.mm.ss aa").subscribe(new IExConsumer<String>() {
            @Override
            public void accept(@NonNull String s) throws Exception {
                System.out.println(s);

@@ -7,6 +7,7 @@ import io.reactivex.annotations.NonNull;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 /**
@@ -235,6 +236,47 @@ public final class TimeBuilder {
     }
 
     /**
+     * Setting time.
+     *
+     * @param hour
+     * @param minute
+     * @param second
+     * @return
+     */
+    public TimeBuilder withTime(@NonNull int hour, @NonNull int minute, @NonNull int second) {
+        TimeBuilder copy = getCopyObject();
+
+        Calendar calendar = copy.calendar;
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, second);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        return copy;
+    }
+
+    /**
+     * Setting time.
+     *
+     * @param hour
+     * @param minute
+     * @param second
+     * @param milliSecond
+     * @return
+     */
+    public TimeBuilder withTime(@NonNull int hour, @NonNull int minute, @NonNull int second, @NonNull int milliSecond) {
+        TimeBuilder copy = getCopyObject();
+
+        Calendar calendar = copy.calendar;
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, second);
+        calendar.set(Calendar.MILLISECOND, milliSecond);
+
+        return copy;
+    }
+
+    /**
      * Create year +- year value.
      *
      * @param year
@@ -458,6 +500,15 @@ public final class TimeBuilder {
     @NonNull
     public int getMilliSecond() {
         return TimeUtil.GetMilliSecond(calendar);
+    }
+
+    /**
+     * get is leap year.
+     *
+     * @return
+     */
+    public boolean isLeapYear() {
+        return new GregorianCalendar(locale).isLeapYear(getYear());
     }
 
     /**
