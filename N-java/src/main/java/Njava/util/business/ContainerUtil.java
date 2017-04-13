@@ -3,6 +3,7 @@ package Njava.util.business;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import Njava.function.ISupplier;
 import Njava.function.exceptionLambda.IExConsumer;
@@ -136,7 +137,17 @@ public class ContainerUtil {
      * @param <T>
      * @return
      */
-    public static <T> Set<T> CreateConcurrentHashSet() {
+    public static <T> Set<T> CreateConcurrentSet() {
         return Collections.newSetFromMap(new ConcurrentHashMap<T, Boolean>());
+    }
+
+    /**
+     * Create CopyOnWriteArrayList.
+     *
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> CreateConcurrentList() {
+        return new CopyOnWriteArrayList<>();
     }
 }
