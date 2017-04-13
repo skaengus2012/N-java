@@ -1,8 +1,8 @@
 package Njava.util.business;
 
 
-import java.util.Collection;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 import Njava.function.ISupplier;
 import Njava.function.exceptionLambda.IExConsumer;
@@ -128,5 +128,15 @@ public class ContainerUtil {
                 map.put(key, iSupplier.accept());
             }
         });
+    }
+
+    /**
+     * Create ConcurrentHashSet.
+     *
+     * @param <T>
+     * @return
+     */
+    public static <T> Set<T> CreateConcurrentHashSet() {
+        return Collections.newSetFromMap(new ConcurrentHashMap<T, Boolean>());
     }
 }
