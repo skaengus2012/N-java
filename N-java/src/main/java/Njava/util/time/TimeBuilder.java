@@ -1,5 +1,6 @@
 package Njava.util.time;
 
+import Njava.util.business.CloneUtil;
 import Njava.util.function.MaybeUtil;
 import Njava.util.time.duration.Duration;
 import io.reactivex.Maybe;
@@ -10,15 +11,16 @@ import java.util.*;
 
 /**
  * Manage calendar using Builder.
- *
+ * <p>
  * Created by Doohyun on 2017. 3. 26..
  */
-public final class TimeBuilder implements Comparable<TimeBuilder>{
+public final class TimeBuilder implements Comparable<TimeBuilder> {
 
     private Calendar calendar;
     private Locale locale = Locale.getDefault();
 
-    private TimeBuilder(){}
+    private TimeBuilder() {
+    }
 
     public static TimeBuilder Create(@NonNull Integer year, @NonNull Integer humanMonth, @NonNull Integer dayOfMonth) {
         TimeBuilder timeBuilder = new TimeBuilder();
@@ -40,7 +42,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     @NonNull
-    public static TimeBuilder Create(@NonNull Calendar calendar){
+    public static TimeBuilder Create(@NonNull Calendar calendar) {
         TimeBuilder timeBuilder = new TimeBuilder();
         timeBuilder.calendar = calendar;
 
@@ -91,19 +93,6 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
     }
 
     /**
-     * Deep-copy.
-     *
-     * @return
-     */
-    public final TimeBuilder getCopyObject() {
-        TimeBuilder newTimeBuilder = new TimeBuilder();
-        newTimeBuilder.calendar = calendar;
-        newTimeBuilder.locale = locale;
-
-        return newTimeBuilder;
-    }
-
-    /**
      * setting locale.
      *
      * @param locale
@@ -111,7 +100,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      */
     @NonNull
     public TimeBuilder setLocale(@NonNull Locale locale) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.locale = locale;
 
         return copy;
@@ -124,7 +113,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      */
     @NonNull
     public TimeBuilder firstDayOfMonth() {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar = TimeUtil.GetCalendarStartDayOfMonth(TimeUtil.GetYear(calendar), TimeUtil.GetMonthForHuman(calendar));
 
         return copy;
@@ -136,7 +125,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder endDayOfMonth() {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar = TimeUtil.GetCalendarEndDayOfMonth(TimeUtil.GetYear(calendar), TimeUtil.GetMonthForHuman(calendar));
 
         return copy;
@@ -149,7 +138,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder withYear(@NonNull int year) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.set(Calendar.YEAR, year);
 
         return copy;
@@ -162,7 +151,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder withMonth(@NonNull int humanMonth) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.set(Calendar.MONTH, humanMonth - 1);
 
         return copy;
@@ -175,7 +164,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder withDayOfMonth(@NonNull int dayOfMonth) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
         return copy;
@@ -188,7 +177,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder withHour(@NonNull int hour) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.set(Calendar.HOUR_OF_DAY, hour);
 
         return copy;
@@ -201,7 +190,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder withMinute(@NonNull int minute) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.set(Calendar.MINUTE, minute);
 
         return copy;
@@ -214,7 +203,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder withSecond(@NonNull int second) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.set(Calendar.SECOND, second);
 
         return copy;
@@ -227,7 +216,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder withMilliSecond(@NonNull int milliSecond) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.set(Calendar.MILLISECOND, milliSecond);
 
         return copy;
@@ -242,7 +231,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder withTime(@NonNull int hour, @NonNull int minute, @NonNull int second) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
 
         Calendar calendar = copy.calendar;
         calendar.set(Calendar.HOUR_OF_DAY, hour);
@@ -263,7 +252,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder withTime(@NonNull int hour, @NonNull int minute, @NonNull int second, @NonNull int milliSecond) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
 
         Calendar calendar = copy.calendar;
         calendar.set(Calendar.HOUR_OF_DAY, hour);
@@ -282,7 +271,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      */
     @NonNull
     public TimeBuilder addYear(@NonNull int year) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.add(Calendar.YEAR, year);
 
         return copy;
@@ -296,7 +285,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      */
     @NonNull
     public TimeBuilder addMonth(@NonNull int month) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.add(Calendar.MONTH, month);
 
         return copy;
@@ -310,7 +299,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      */
     @NonNull
     public TimeBuilder addDay(@NonNull int day) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.add(Calendar.DAY_OF_MONTH, day);
 
         return copy;
@@ -323,7 +312,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder addHour(@NonNull int hour) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.add(Calendar.HOUR_OF_DAY, hour);
 
         return copy;
@@ -336,7 +325,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder addMinute(@NonNull int minute) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.add(Calendar.MINUTE, minute);
 
         return copy;
@@ -349,7 +338,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder addSecond(@NonNull int second) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.add(Calendar.SECOND, second);
 
         return copy;
@@ -362,7 +351,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder addMilliSecond(@NonNull int millisecond) {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar.add(Calendar.MILLISECOND, millisecond);
 
         return copy;
@@ -374,7 +363,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     public TimeBuilder to_yyMMdd() {
-        TimeBuilder copy = getCopyObject();
+        TimeBuilder copy = CloneUtil.CopyProperties(this);
         copy.calendar = TimeUtil.To_yyMMdd(calendar);
 
         return copy;
@@ -386,7 +375,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
      * @return
      */
     @NonNull
-    public Calendar getCalendar(){
+    public Calendar getCalendar() {
         return calendar;
     }
 
@@ -576,11 +565,10 @@ public final class TimeBuilder implements Comparable<TimeBuilder>{
     }
 
     /**
-     *
      * @return
      */
     @NonNull
-    public String toString(){
+    public String toString() {
         return calendar.toString();
     }
 

@@ -142,6 +142,37 @@ public class ContainerUtil {
     }
 
     /**
+     * Create Sorted Set (TreeSet)
+     *
+     * @param <T>
+     * @return
+     */
+    public static <T extends Comparable> Set<T> CreateSortedSet() {
+        return new TreeSet<>();
+    }
+
+    /**
+     * Create Sorted Set (TreeSet) with Comparable.
+     *
+     * @param comparator
+     * @param <T>
+     * @return
+     */
+    public static <T> Set<T> CreateSortedSet(Comparator<T> comparator) {
+        return new TreeSet<>(comparator);
+    }
+
+    /**
+     * Create linked hash set.
+     *
+     * @param <T>
+     * @return
+     */
+    public static <T> Set<T> CreateLinkedHashSet() {
+        return new LinkedHashSet<>();
+    }
+
+    /**
      * Create CopyOnWriteArrayList.
      *
      * @param <T>
@@ -149,5 +180,99 @@ public class ContainerUtil {
      */
     public static <T> List<T> CreateConcurrentList() {
         return new CopyOnWriteArrayList<>();
+    }
+
+    /**
+     * Create list by T[]
+     *
+     * @param ts
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> AsList(@NonNull T... ts) {
+        return Arrays.asList(ts);
+    }
+
+    /**
+     * input Elements into Collection.
+     *
+     * @param set
+     * @param ts
+     * @param <T>
+     */
+    private static <T> Set<T> Create_UnModifiableSet_By_InputElements(@NonNull Set<T> set, @NonNull T... ts) {
+        for (T t : ts) {
+            set.add(t);
+        }
+
+        return Collections.unmodifiableSet(set);
+    }
+
+    /**
+     * Create set by T[]
+     *
+     * @param ts
+     * @param <T>
+     * @return
+     */
+    public static <T> Set<T> AsSet(@NonNull T... ts) {
+        return Create_UnModifiableSet_By_InputElements(new HashSet<T>(), ts);
+    }
+
+    /**
+     * Create linked set by T[]
+     *
+     * @param ts
+     * @param <T>
+     * @return
+     */
+    public static <T> Set<T> AsLinkedHashSet(@NonNull T... ts) {
+        return Create_UnModifiableSet_By_InputElements(ContainerUtil.<T>CreateLinkedHashSet(), ts);
+    }
+
+    /**
+     * Get Sorted Set (TreeSet) by T[]
+     *
+     * @param ts
+     * @param <T>
+     * @return
+     */
+    public static <T extends Comparable> Set<T> AsSortedSet(@NonNull T... ts) {
+        return Create_UnModifiableSet_By_InputElements(ContainerUtil.<T>CreateSortedSet(), ts);
+    }
+
+    /**
+     * Get Sorted Set (TreeSet) by T[]
+     *
+     * @param comparator
+     * @param ts
+     * @param <T>
+     * @return
+     */
+    public static <T> Set<T> AsSortedSet(@NonNull Comparator<T> comparator, @NonNull T... ts) {
+        return Create_UnModifiableSet_By_InputElements(CreateSortedSet(comparator), ts);
+    }
+
+    /**
+     * Create Sorted Map
+     *
+     * @param <T>
+     * @param <E>
+     * @return
+     */
+    public static <T extends Comparable, E> Map<T, E> CreateSortedMap() {
+        return new TreeMap<>();
+    }
+
+    /**
+     * Create Sorted Map (with comparator)
+     *
+     * @param comparator
+     * @param <T>
+     * @param <E>
+     * @return
+     */
+    public static <T, E> Map<T, E> CreateSortedMap(Comparator<T> comparator) {
+        return new TreeMap<>(comparator);
     }
 }
