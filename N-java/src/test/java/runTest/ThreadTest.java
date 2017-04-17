@@ -13,6 +13,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 
 /**
+ * Thread Test.
+ *
  * Created by Doohyun on 2017. 4. 16..
  */
 public class ThreadTest {
