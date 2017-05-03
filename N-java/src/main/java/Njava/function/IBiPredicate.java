@@ -1,7 +1,5 @@
 package Njava.function;
 
-import io.reactivex.annotations.NonNull;
-
 /**
  * JAVA8 BiPredicate Support
  *
@@ -12,5 +10,5 @@ import io.reactivex.annotations.NonNull;
  * Created by Doohyun on 2017. 3. 5..
  */
 public interface IBiPredicate<T, R> {
-    boolean test(@NonNull T t, @NonNull R r);
+    boolean test(T t, R r);
 }

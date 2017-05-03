@@ -1,7 +1,5 @@
 package Njava.function;
 
-import io.reactivex.annotations.NonNull;
-
 /**
  * JAVA8 Predicate Support
  *
@@ -12,5 +10,5 @@ import io.reactivex.annotations.NonNull;
  * Created by Doohyun on 2017. 3. 5..
  */
 public interface IPredicate<T> {
-    boolean test(@NonNull T t);
+    boolean test(T t);
 }

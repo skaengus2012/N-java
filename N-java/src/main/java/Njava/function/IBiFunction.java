@@ -1,7 +1,5 @@
 package Njava.function;
 
-import io.reactivex.annotations.NonNull;
-
 /**
  * JAVA8 BiFunction Support
  *
@@ -12,5 +10,5 @@ import io.reactivex.annotations.NonNull;
  * Created by Doohyun on 2017. 3. 5..
  */
 public interface IBiFunction<T, U, R> {
-    R apply(@NonNull T t, @NonNull U u);
+    R apply(T t, U u);
 }

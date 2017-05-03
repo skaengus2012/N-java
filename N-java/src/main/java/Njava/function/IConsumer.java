@@ -1,7 +1,5 @@
 package Njava.function;
 
-import io.reactivex.annotations.NonNull;
-
 /**
  * JAVA8 Consumer Support
  *
@@ -12,5 +10,5 @@ import io.reactivex.annotations.NonNull;
  * Created by Doohyun on 2017. 3. 5..
  */
 public interface IConsumer<T> {
-    void accept(@NonNull T t);
+    void accept(T t);
 }

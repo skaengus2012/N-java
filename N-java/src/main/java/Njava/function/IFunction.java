@@ -1,7 +1,5 @@
 package Njava.function;
 
-import io.reactivex.annotations.NonNull;
-
 /**
  * JAVA8 Function Support
  *
@@ -12,5 +10,5 @@ import io.reactivex.annotations.NonNull;
  * Created by Doohyun on 2017. 3. 5..
  */
 public interface IFunction<T, R> {
-    R apply(@NonNull T t);
+    R apply(T t);
 }
