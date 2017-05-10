@@ -11,7 +11,7 @@ import io.reactivex.annotations.NonNull;
  */
 public class ObjectUtil {
 
-    private ObjectUtil(){}
+    protected ObjectUtil(){}
 
     /**
      * 객체 생성

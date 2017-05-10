@@ -25,7 +25,7 @@ import java.util.Comparator;
 
 public class MaybeUtil {
 
-    private MaybeUtil(){}
+    protected MaybeUtil(){}
 
     /**
      * Create Maybe null able.

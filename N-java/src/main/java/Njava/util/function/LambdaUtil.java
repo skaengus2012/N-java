@@ -21,7 +21,7 @@ import java.util.Comparator;
 
 public class LambdaUtil {
 
-    private LambdaUtil(){}
+    protected LambdaUtil(){}
 
     /**
      * Create Predicate Builder

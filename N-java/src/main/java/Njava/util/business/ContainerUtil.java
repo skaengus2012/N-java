@@ -22,7 +22,7 @@ import io.reactivex.annotations.Nullable;
 
 public class ContainerUtil {
 
-    private ContainerUtil(){}
+    protected ContainerUtil(){}
 
     /**
      * Collection 빈 상태 확인.

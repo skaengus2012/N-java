@@ -24,7 +24,7 @@ import io.reactivex.functions.Function;
 
 public class StringUtil {
 
-    private StringUtil(){}
+    protected StringUtil(){}
 
     /**
      * String 클래스가 비었는지 확인

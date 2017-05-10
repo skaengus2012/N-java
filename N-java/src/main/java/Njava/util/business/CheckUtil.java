@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class CheckUtil {
 
-    private CheckUtil(){}
+    protected CheckUtil(){}
 
     private static final String ERROR_BAD_ASSESS = "[ERROR] BAD DATA ASSESS";
 

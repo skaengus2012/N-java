@@ -18,7 +18,7 @@ import java.util.Comparator;
  */
 public class MathUtil {
 
-    private MathUtil(){}
+    protected MathUtil(){}
 
     /**
      * Return Max Function Observable.

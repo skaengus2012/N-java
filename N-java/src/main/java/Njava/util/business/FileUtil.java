@@ -21,7 +21,7 @@ import java.nio.channels.FileChannel;
  */
 public class FileUtil {
 
-    private FileUtil(){}
+    protected FileUtil(){}
 
     /**
      * 파일 존재 여부
