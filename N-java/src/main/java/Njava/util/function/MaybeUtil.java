@@ -3,6 +3,7 @@ package Njava.util.function;
 import Njava.function.ISupplier;
 import Njava.function.exceptionLambda.IExConsumer;
 import Njava.function.exceptionLambda.IExFunction;
+import Njava.function.exceptionLambda.IExRunnable;
 import Njava.util.business.CheckUtil;
 import io.reactivex.Maybe;
 import io.reactivex.annotations.NonNull;
@@ -58,7 +59,7 @@ public class MaybeUtil {
     public static <T> void Subscribe(
             @NonNull Maybe<T> maybe
             , @NonNull IExConsumer<T> consumer
-            , @NonNull Runnable emptyRunnable) {
+            , @NonNull IExRunnable emptyRunnable) {
         // empty maybe.
         SubscribeEmpty(maybe, emptyRunnable);
 
@@ -76,7 +77,7 @@ public class MaybeUtil {
     @NonNull
     public static <T> void SubscribeEmpty(
             @NonNull Maybe<T> maybe
-            , @NonNull final Runnable run) {
+            , @NonNull final IExRunnable run) {
         maybe.isEmpty().subscribe(new IExConsumer<Boolean>() {
             @Override
             public void accept(@NonNull Boolean emptyYn) throws Exception {

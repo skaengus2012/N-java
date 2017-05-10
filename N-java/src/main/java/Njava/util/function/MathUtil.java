@@ -1,10 +1,14 @@
 package Njava.util.function;
 
 import Njava.function.exceptionLambda.IExFunction;
+import Njava.util.function.math.ObservableAverageBigDecimal;
+import Njava.util.function.math.ObservableSumBigDecimal;
 import hu.akarnokd.rxjava2.math.MathObservable;
 import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.plugins.RxJavaPlugins;
 
+import java.math.BigDecimal;
 import java.util.Comparator;
 
 /**
@@ -167,16 +171,32 @@ public class MathUtil {
     }
 
     /**
+     * Return Sum BigDecimal Function Observable
+     *
+     * @return
+     */
+    public static IExFunction<Observable<BigDecimal>, Observable<BigDecimal>> SumBigDecimal() {
+        return new IExFunction<Observable<BigDecimal>, Observable<BigDecimal>>(){
+
+            @Override
+            public Observable<BigDecimal> apply(Observable<BigDecimal> t) throws Exception {
+                return RxJavaPlugins.onAssembly(new ObservableSumBigDecimal(t));
+            }
+
+        };
+    }
+
+    /**
      * Return Average Float Function Observable
      *
      * @return
      */
-    public static IExFunction<Observable<Number>, Observable<Float>> AverageFloat(){
+    public static IExFunction<Observable<? extends Number>, Observable<Float>> AverageFloat(){
 
-        return new IExFunction<Observable<Number>, Observable<Float>>(){
+        return new IExFunction<Observable<? extends Number>, Observable<Float>>(){
 
             @Override
-            public Observable<Float> apply(Observable<Number> t) throws Exception {
+            public Observable<Float> apply(Observable<? extends Number> t) throws Exception {
                 return MathObservable.averageFloat(t);
             }
 
@@ -188,13 +208,30 @@ public class MathUtil {
      *
      * @return
      */
-    public static IExFunction<Observable<Number>, Observable<Double>> AverageDouble(){
+    public static IExFunction<Observable<? extends Number>, Observable<Double>> AverageDouble(){
 
-        return new IExFunction<Observable<Number>, Observable<Double>>(){
+        return new IExFunction<Observable<? extends Number>, Observable<Double>>(){
 
             @Override
-            public Observable<Double> apply(Observable<Number> t) throws Exception {
+            public Observable<Double> apply(Observable<? extends Number> t) throws Exception {
                 return MathObservable.averageDouble(t);
+            }
+
+        };
+    }
+
+    /**
+     * Return Average BigDecimal Function Observable
+     *
+     * @return
+     */
+    public static IExFunction<Observable<BigDecimal>, Observable<BigDecimal>> AverageBigDecimal(){
+
+        return new IExFunction<Observable<BigDecimal>, Observable<BigDecimal>>(){
+
+            @Override
+            public Observable<BigDecimal> apply(Observable<BigDecimal> t) throws Exception {
+                return RxJavaPlugins.onAssembly(new ObservableAverageBigDecimal(t));
             }
 
         };

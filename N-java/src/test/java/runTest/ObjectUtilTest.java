@@ -1,9 +1,11 @@
 package runTest;
 
 import Njava.function.IConsumer;
+import Njava.util.business.CheckUtil;
 import Njava.util.business.ObjectUtil;
 import org.junit.Test;
 import testObject.Member;
+import testObject.MessageException;
 
 /**
  * Created by Doohyun on 2017. 4. 16..
@@ -44,6 +46,10 @@ public class ObjectUtilTest {
             newInstance.setName("Test");
 
             printInfo.accept(newInstance);
+
+            MessageException m = ObjectUtil.NewInstance(MessageException.class);
+
+            CheckUtil.NullCheck(m, "비어있니", RuntimeException.class);
         }
     }
 }

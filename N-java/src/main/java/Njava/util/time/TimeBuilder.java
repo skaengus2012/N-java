@@ -1,5 +1,6 @@
 package Njava.util.time;
 
+import Njava.function.exceptionLambda.IExRunnable;
 import Njava.util.business.ObjectUtil;
 import Njava.util.function.MaybeUtil;
 import Njava.util.time.duration.Duration;
@@ -72,7 +73,7 @@ public final class TimeBuilder implements Comparable<TimeBuilder> {
         Maybe<Date> dateMaybe = TimeUtil.ParseDate(dateString, format);
 
         // If maybe is null, that`s error.
-        MaybeUtil.SubscribeEmpty(dateMaybe, new Runnable() {
+        MaybeUtil.SubscribeEmpty(dateMaybe, new IExRunnable() {
             @Override
             public void run() {
                 throw new RuntimeException("[ERROR] Date format error");

@@ -8,6 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import Njava.function.ISupplier;
 import Njava.function.exceptionLambda.IExConsumer;
 import Njava.function.exceptionLambda.IExFunction;
+import Njava.function.exceptionLambda.IExRunnable;
 import Njava.util.function.MaybeUtil;
 import io.reactivex.Maybe;
 import io.reactivex.annotations.NonNull;
@@ -125,7 +126,7 @@ public class ContainerUtil {
             @NonNull final Map<T, R> map
             , @NonNull final T key
             , @NonNull final ISupplier<R> iSupplier) {
-        MaybeUtil.SubscribeEmpty(JustInMap(map, key), new Runnable() {
+        MaybeUtil.SubscribeEmpty(JustInMap(map, key), new IExRunnable() {
             @Override
             public void run() {
                 map.put(key, iSupplier.accept());
