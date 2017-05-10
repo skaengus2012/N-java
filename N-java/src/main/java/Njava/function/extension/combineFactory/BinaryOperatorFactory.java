@@ -15,11 +15,22 @@ public class BinaryOperatorFactory<T> extends BiFunctionFactory<T, T, T> {
     }
 
     /**
-     * Return Exception able UnaryOperator.
+     * Return BinaryOperator
      *
      * @return
      */
-    public IExBinaryOperator<T> getEx() {
+    @Override
+    public IBinaryOperator<T> get() {
+        return (IBinaryOperator<T>) super.get();
+    }
+
+    /**
+     * Return Exception able BinaryOperatorFactory.
+     *
+     * @return
+     */
+    @Override
+    public IExBinaryOperator<T> getRx() {
         return new IExBinaryOperator<T>() {
             @Override
             public T apply(@NonNull T t1, @NonNull T t2) {

@@ -1,7 +1,7 @@
 package Njava.concurrent;
 
-import Njava.modeler.NxModeler;
-import Njava.util.business.CloneUtil;
+import Njava.common.NxComponent;
+import Njava.util.business.ObjectUtil;
 import io.reactivex.annotations.NonNull;
 
 import java.util.concurrent.TimeUnit;
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  *
  * Created by Doohyun on 2017. 4. 16..
  */
-public class NxExecuteIngredient extends NxModeler {
+public class NxExecuteIngredient extends NxComponent {
 
     Integer corePoolSize = 0;
     Long keepArriveTime = 60L;
@@ -48,7 +48,7 @@ public class NxExecuteIngredient extends NxModeler {
      * @return
      */
     public NxExecuteIngredient setCorePoolSize(@NonNull Integer corePoolSize) {
-        NxExecuteIngredient copy = CloneUtil.CopyProperties(this);
+        NxExecuteIngredient copy = ObjectUtil.CopyProperties(this);
         copy.corePoolSize = corePoolSize;
         return copy;
     }
@@ -60,7 +60,7 @@ public class NxExecuteIngredient extends NxModeler {
      * @return
      */
     public NxExecuteIngredient setMaxPoolSize(@NonNull Integer maxPoolSize) {
-        NxExecuteIngredient copy = CloneUtil.CopyProperties(this);
+        NxExecuteIngredient copy = ObjectUtil.CopyProperties(this);
         copy.maxPoolSize = maxPoolSize;
 
         return copy;
@@ -73,7 +73,7 @@ public class NxExecuteIngredient extends NxModeler {
      * @return
      */
     public NxExecuteIngredient setQueueSize(@NonNull Integer queueSize) {
-        NxExecuteIngredient copy = CloneUtil.CopyProperties(this);
+        NxExecuteIngredient copy = ObjectUtil.CopyProperties(this);
         copy.queueSize = queueSize;
 
         return copy;
@@ -87,7 +87,7 @@ public class NxExecuteIngredient extends NxModeler {
      * @return
      */
     public NxExecuteIngredient setKeepArriveTime(@NonNull long keepArriveTime, @NonNull TimeUnit timeUnit) {
-        NxExecuteIngredient copy = CloneUtil.CopyProperties(this);
+        NxExecuteIngredient copy = ObjectUtil.CopyProperties(this);
         copy.keepArriveTime = keepArriveTime;
         copy.timeUnit = timeUnit;
 

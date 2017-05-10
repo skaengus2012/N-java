@@ -3,7 +3,7 @@ package Njava.util.function;
 import Njava.function.ISupplier;
 import Njava.function.exceptionLambda.IExConsumer;
 import Njava.function.exceptionLambda.IExFunction;
-import Njava.modeler.NxModeler;
+import Njava.util.business.CheckUtil;
 import io.reactivex.Maybe;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.annotations.Nullable;
@@ -23,6 +23,8 @@ import java.util.Comparator;
  */
 
 public class MaybeUtil {
+
+    private MaybeUtil(){}
 
     /**
      * Create Maybe null able.
@@ -107,10 +109,15 @@ public class MaybeUtil {
      * @param maybe
      * @return
      */
-    public static boolean IsEmpty(@NonNull Maybe<? extends Object> maybe) {
-        NxModeler.NullCheck(maybe);
-
-        return maybe.isEmpty().blockingGet();
+    public static boolean IsEmpty(@Nullable Maybe<? extends Object> maybe) {
+        return MaybeUtil.JustNullable(maybe).
+                    map(new IExFunction<Maybe<? extends Object>, Boolean>(){
+                        @Override
+                        public Boolean apply(@NonNull Maybe<?> maybe) throws Exception {
+                            return maybe.isEmpty().blockingGet();
+                        }
+                    }).
+                    blockingGet(true);
     }
 
     /**
@@ -121,8 +128,8 @@ public class MaybeUtil {
      * @return
      */
     public static boolean Equals(@NonNull final Maybe<? extends Object> m1, @NonNull final Maybe<? extends Object> m2) {
-        NxModeler.NullCheck(m1);
-        NxModeler.NullCheck(m2);
+        CheckUtil.NullCheck(m1);
+        CheckUtil.NullCheck(m2);
 
         return m1.flatMap(new IExFunction<Object, Maybe<Boolean>>(){
                                 @Override
@@ -146,8 +153,8 @@ public class MaybeUtil {
      * @return
      */
     public static int CompareTo(@NonNull final Maybe<? extends Comparable> m1, @NonNull final Maybe<? extends Comparable> m2) {
-        NxModeler.NullCheck(m1);
-        NxModeler.NullCheck(m2);
+        CheckUtil.NullCheck(m1);
+        CheckUtil.NullCheck(m2);
 
         return m1.flatMap(new IExFunction<Comparable, Maybe<Integer>>(){
                     @Override
@@ -176,9 +183,9 @@ public class MaybeUtil {
             @NonNull final Maybe<? extends T> m1
             , @NonNull final Maybe<? extends T> m2
             , @NonNull final Comparator<T> comparator) {
-        NxModeler.NullCheck(m1);
-        NxModeler.NullCheck(m2);
-        NxModeler.NullCheck(comparator);
+        CheckUtil.NullCheck(m1);
+        CheckUtil.NullCheck(m2);
+        CheckUtil.NullCheck(comparator);
 
         return m1.flatMap(new IExFunction<T, Maybe<Integer>>(){
                     @Override

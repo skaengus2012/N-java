@@ -1,6 +1,6 @@
 package Njava.util.time.duration;
 
-import Njava.modeler.NxModeler;
+import Njava.util.business.CheckUtil;
 import Njava.util.function.LambdaUtil;
 import Njava.util.time.TimeBuilder;
 import io.reactivex.annotations.NonNull;
@@ -33,8 +33,8 @@ public abstract class Duration {
         // standard : relative!!!
         Duration builder = new RelativeDuration();
 
-        NxModeler.NullCheck(time1);
-        NxModeler.NullCheck(time2);
+        CheckUtil.NullCheck(time1);
+        CheckUtil.NullCheck(time2);
 
         // simple comparator.
         Comparator<TimeBuilder> timeBuilderComparator = new Comparator<TimeBuilder>() {

@@ -3,14 +3,15 @@ package Njava.util.business;
 import com.rits.cloning.Cloner;
 import io.reactivex.annotations.NonNull;
 
+
 /**
- * Clone Util
+ * Object Relation Util.
  *
  * Created by Doohyun on 2017. 4. 16..
  */
-public class CloneUtil {
+public class ObjectUtil {
 
-    private CloneUtil(){}
+    private ObjectUtil(){}
 
     /**
      * 객체 생성

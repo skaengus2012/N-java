@@ -4,7 +4,6 @@ import Njava.function.exceptionLambda.IExBiFunction;
 import Njava.function.exceptionLambda.IExConsumer;
 import Njava.function.exceptionLambda.IExFunction;
 import Njava.function.exceptionLambda.IExPredicate;
-import Njava.modeler.NxModeler;
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
@@ -21,6 +20,8 @@ import java.nio.channels.FileChannel;
  * Created by Doohyun on 2017. 3. 29..
  */
 public class FileUtil {
+
+    private FileUtil(){}
 
     /**
      * 파일 존재 여부
@@ -80,17 +81,21 @@ public class FileUtil {
         if (splitList.length == 0) {
             result = "";
         } else {
-            result =  Observable.range(0, splitList.length - 1).map(new IExFunction<Integer, String>() {
-                @Override
-                public String apply(@NonNull Integer index) throws Exception {
-                    return splitList[index];
-                }
-            }).reduce(new StringBuffer(""), new IExBiFunction<StringBuffer, String, StringBuffer>() {
-                @Override
-                public StringBuffer apply(@NonNull StringBuffer result, @NonNull String folder) throws Exception {
-                    return result.append(folder).append("/");
-                }
-            }).blockingGet().toString();
+            result =  Observable.range(0, splitList.length - 1).
+                            map(new IExFunction<Integer, String>() {
+                                @Override
+                                public String apply(@NonNull Integer index) throws Exception {
+                                    return splitList[index];
+                                }
+                            }).
+                            reduce(new StringBuffer(""), new IExBiFunction<StringBuffer, String, StringBuffer>() {
+                                @Override
+                                public StringBuffer apply(@NonNull StringBuffer result, @NonNull String folder) throws Exception {
+                                    return result.append(folder).append("/");
+                                }
+                            }).
+                            blockingGet().
+                            toString();
         }
 
         // 파일 주소가 비어있다면, '/' 를 추가한다.
@@ -109,7 +114,7 @@ public class FileUtil {
      */
     @NonNull
     public static File CreateFileObject(@NonNull String filePath) {
-        NxModeler.NullCheck(filePath);
+        CheckUtil.NullCheck(filePath);
 
         return new File(filePath);
     }
@@ -125,7 +130,7 @@ public class FileUtil {
      * @throws IOException
      */
     public static void CreateFile(@NonNull String filePath) throws IOException{
-        NxModeler.NullCheck(filePath);
+        CheckUtil.NullCheck(filePath);
 
         File file = CreateFileObject(filePath);
 
@@ -142,7 +147,7 @@ public class FileUtil {
      * @throws IOException
      */
     public static void CreateFile(@NonNull File file) throws IOException{
-        NxModeler.NullCheck(file);
+        CheckUtil.NullCheck(file);
 
         CreateFile(file.getPath());
     }
@@ -153,7 +158,7 @@ public class FileUtil {
      * @param filePath
      */
     public static void CreateDirectory(@NonNull final String filePath) {
-        NxModeler.NullCheck(filePath);
+        CheckUtil.NullCheck(filePath);
 
         File directory = CreateFileObject(filePath);
 
@@ -178,7 +183,7 @@ public class FileUtil {
      * @param filePath
      */
     public static void CreateDirectoryExcludeLastPath(@NonNull String filePath) {
-        NxModeler.NullCheck(filePath);
+        CheckUtil.NullCheck(filePath);
 
         // 마지막 파일 상태를 제외한다.
         String excludeLastPath = GetDirectoryPath(filePath);
@@ -192,7 +197,7 @@ public class FileUtil {
      * @param directory
      */
     public static void CreateDirectory(@NonNull final File directory) {
-        NxModeler.NullCheck(directory);
+        CheckUtil.NullCheck(directory);
 
         CreateDirectory(directory.getPath());
     }
@@ -203,7 +208,7 @@ public class FileUtil {
      * @param filePath
      */
     public static void DeleteFile(@NonNull String filePath) {
-        NxModeler.NullCheck(filePath);
+        CheckUtil.NullCheck(filePath, "[ERROR] fileParam param is empty!!", RuntimeException.class);
 
         File file = new File(filePath);
 
@@ -221,8 +226,8 @@ public class FileUtil {
      */
     public static void CopyFile(@NonNull String inFileName, @NonNull String outFileName) throws IOException {
 
-        NxModeler.NullCheck(inFileName);
-        NxModeler.NullCheck(outFileName);
+        CheckUtil.NullCheck(inFileName, "[ERROR] inFileName param empty!!", RuntimeException.class);
+        CheckUtil.NullCheck(outFileName, "[ERROR] outFileName param empty!!", RuntimeException.class);
 
         FileInputStream inputStream = new FileInputStream(inFileName);
         FileOutputStream outputStream = new FileOutputStream(outFileName);

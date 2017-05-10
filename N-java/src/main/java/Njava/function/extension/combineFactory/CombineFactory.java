@@ -1,7 +1,7 @@
 package Njava.function.extension.combineFactory;
 
 
-import Njava.modeler.NxModeler;
+import Njava.common.NxComponent;
 import io.reactivex.annotations.NonNull;
 
 /**
@@ -9,7 +9,7 @@ import io.reactivex.annotations.NonNull;
  *
  * Created by Doohyun on 2017. 3. 8..
  */
-public abstract class CombineFactory<T, V> extends NxModeler {
+public abstract class CombineFactory<T, V> extends NxComponent {
     private T lambda;
 
     public CombineFactory(@NonNull T lambda) {
@@ -29,7 +29,7 @@ public abstract class CombineFactory<T, V> extends NxModeler {
      *
      * @return
      */
-    public final T get() {
+    public T get() {
         return lambda;
     }
 }

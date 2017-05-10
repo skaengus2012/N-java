@@ -3,7 +3,7 @@ package Njava.util.function;
 
 import Njava.function.*;
 import Njava.function.extension.combineFactory.*;
-import Njava.modeler.NxModeler;
+import Njava.util.business.CheckUtil;
 import io.reactivex.annotations.NonNull;
 
 import java.util.Comparator;
@@ -21,6 +21,8 @@ import java.util.Comparator;
 
 public class LambdaUtil {
 
+    private LambdaUtil(){}
+
     /**
      * Create Predicate Builder
      *
@@ -30,7 +32,7 @@ public class LambdaUtil {
      */
     @NonNull
     public static <T> PredicateFactory<T> PredicateBuilder(@NonNull IPredicate<T> iPredicate) {
-        NxModeler.NullCheck(iPredicate);
+        CheckUtil.NullCheck(iPredicate);
 
         return new PredicateFactory<>(iPredicate);
     }
@@ -45,7 +47,7 @@ public class LambdaUtil {
      */
     @NonNull
     public static <T, U> BiPredicateFactory<T, U> PredicateBuilder(@NonNull IBiPredicate<T, U> iBiPredicate) {
-        NxModeler.NullCheck(iBiPredicate);
+        CheckUtil.NullCheck(iBiPredicate);
 
         return new BiPredicateFactory<>(iBiPredicate);
     }
@@ -59,7 +61,7 @@ public class LambdaUtil {
      */
     @NonNull
     public static <T> ComparatorFactory<T> ComparatorBuilder(@NonNull Comparator<T> comparator){
-        NxModeler.NullCheck(comparator);
+        CheckUtil.NullCheck(comparator);
 
         return new ComparatorFactory<>(comparator);
     }
@@ -76,8 +78,8 @@ public class LambdaUtil {
     public static <T> ComparatorFactory<T> ComparatorBuilder(
             @NonNull Comparator<T> comparator
             , @NonNull Boolean nullFirstYn){
-        NxModeler.NullCheck(comparator);
-        NxModeler.NullCheck(nullFirstYn);
+        CheckUtil.NullCheck(comparator);
+        CheckUtil.NullCheck(nullFirstYn);
 
         return new ComparatorFactory<>(comparator, nullFirstYn);
     }
@@ -96,8 +98,8 @@ public class LambdaUtil {
             @NonNull final IFunction<? super T, ? extends U> keyExtractor
             , @NonNull final Comparator<? super U> keyComparator) {
 
-        NxModeler.NullCheck(keyComparator);
-        NxModeler.NullCheck(keyExtractor);
+        CheckUtil.NullCheck(keyComparator);
+        CheckUtil.NullCheck(keyExtractor);
 
         return new ComparatorFactory<>(new Comparator<T>() {
             @Override
@@ -124,7 +126,7 @@ public class LambdaUtil {
     public static <T, U> ComparatorFactory<T> ComparatorBuilder(
             @NonNull IFunction<? super T, ? extends U> keyExtractor
             , @NonNull ComparatorFactory<? super U> keyComparator) {
-        NxModeler.NullCheck(keyComparator);
+        CheckUtil.NullCheck(keyComparator);
 
         return ComparatorBuilder(keyExtractor, keyComparator.get());
     }
@@ -139,7 +141,7 @@ public class LambdaUtil {
      */
     @NonNull
     public static <T, R> FunctionFactory<T, R> FunctionBuilder(@NonNull IFunction<T, R> function) {
-        NxModeler.NullCheck(function);
+        CheckUtil.NullCheck(function);
 
         return new FunctionFactory<>(function);
     }
@@ -155,7 +157,7 @@ public class LambdaUtil {
      */
     @NonNull
     public static <T, U, R> BiFunctionFactory<T, U, R> FunctionBuilder(@NonNull IBiFunction<T, U, R> function) {
-        NxModeler.NullCheck(function);
+        CheckUtil.NullCheck(function);
 
         return new BiFunctionFactory<>(function);
     }
@@ -167,8 +169,8 @@ public class LambdaUtil {
      * @return
      */
     @NonNull
-    public static <T> IUnaryOperatorFactory<T> GetIdentity() {
-        return new IUnaryOperatorFactory<>(new IUnaryOperator<T>() {
+    public static <T> UnaryOperatorFactory<T> GetIdentity() {
+        return new UnaryOperatorFactory<>(new IUnaryOperator<T>() {
             @Override
             public T apply(@NonNull T t) {
                 return t;
@@ -185,7 +187,7 @@ public class LambdaUtil {
      */
     @NonNull
     public static <T> BinaryOperatorFactory<T> MinBy(@NonNull final Comparator<? super T> comparator) {
-        NxModeler.NullCheck(comparator);
+        CheckUtil.NullCheck(comparator);
 
         return new BinaryOperatorFactory<>(new IBinaryOperator<T>() {
             @Override
@@ -204,7 +206,7 @@ public class LambdaUtil {
      */
     @NonNull
     public static <T> BinaryOperatorFactory<T> MaxBy(@NonNull final Comparator<? super T> comparator) {
-        NxModeler.NullCheck(comparator);
+        CheckUtil.NullCheck(comparator);
 
         return new BinaryOperatorFactory<>(new IBinaryOperator<T>() {
             @Override

@@ -1,11 +1,11 @@
-package Njava.modeler;
+package Njava.common;
 
 import Njava.function.ISupplier;
+import Njava.util.business.CheckUtil;
 import Njava.util.business.ContainerUtil;
-import Njava.util.business.StringUtil;
-import Njava.util.function.MaybeUtil;
 import io.reactivex.Maybe;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.Map;
@@ -23,18 +23,14 @@ import java.util.Map;
  * <p>
  * Created by Doohyun on 2017. 1. 29..
  */
-public class NxModeler {
-    private static final String ERROR_BAD_ASSESS = "[ERROR] BAD DATA ASSESS";
-
+public class NxComponent {
     /**
      * Description : Simple boolean checks
      *
      * @param check
      */
-    public final static void Check(boolean check) {
-        if (!check) {
-            throw new RuntimeException(ERROR_BAD_ASSESS);
-        }
+    public final static void Check(@NonNull Boolean check) {
+        CheckUtil.Check(check);
     }
 
     /**
@@ -42,10 +38,8 @@ public class NxModeler {
      *
      * @param obj
      */
-    public final static void NullCheck(Object obj) {
-        if (obj == null) {
-            throw new RuntimeException(ERROR_BAD_ASSESS);
-        }
+    public final static void NullCheck(@Nullable Object obj) {
+        CheckUtil.NullCheck(obj);
     }
 
     /**
@@ -53,10 +47,8 @@ public class NxModeler {
      *
      * @param maybe
      */
-    public final static void EmptyMaybeCheck(Maybe<? extends Object> maybe) {
-        if (MaybeUtil.IsEmpty(maybe)) {
-            throw new RuntimeException(ERROR_BAD_ASSESS);
-        }
+    public final static void EmptyMaybeCheck(@Nullable Maybe<? extends Object> maybe) {
+        CheckUtil.EmptyMaybeCheck(maybe);
     }
 
     /**
@@ -65,10 +57,7 @@ public class NxModeler {
      * @param obj
      */
     public final static void EmptyToStringCheck(Object obj) {
-        if (StringUtil.IsEmpty(obj)) {
-            // toString 체크
-            throw new RuntimeException(ERROR_BAD_ASSESS);
-        }
+        CheckUtil.EmptyToStringCheck(obj);
     }
 
     /**
@@ -78,9 +67,7 @@ public class NxModeler {
      * @param <T>
      */
     public final static <T> void EmptyContainerCheck(Collection<T> list) {
-        if (ContainerUtil.IsEmpty(list)) {
-            throw new RuntimeException(ERROR_BAD_ASSESS);
-        }
+        CheckUtil.EmptyContainerCheck(list);
     }
 
     /**
@@ -90,9 +77,7 @@ public class NxModeler {
      * @param <T>
      */
     public final static <T> void EmptyContainerCheck(T[] array) {
-        if (ContainerUtil.IsEmpty(array)) {
-            throw new RuntimeException(ERROR_BAD_ASSESS);
-        }
+        CheckUtil.EmptyContainerCheck(array);
     }
 
     /**
@@ -103,9 +88,7 @@ public class NxModeler {
      * @param <R>
      */
     public final static <T, R> void EmptyContainerCheck(Map<T, R> dataSet) {
-        if (ContainerUtil.IsEmpty(dataSet)) {
-            throw new RuntimeException(ERROR_BAD_ASSESS);
-        }
+        CheckUtil.EmptyContainerCheck(dataSet);
     }
 
     /**

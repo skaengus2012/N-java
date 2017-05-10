@@ -13,6 +13,7 @@ import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.annotations.Nullable;
 import io.reactivex.functions.Function;
 
 /**
@@ -23,6 +24,8 @@ import io.reactivex.functions.Function;
 
 public class StringUtil {
 
+    private StringUtil(){}
+
     /**
      * String 클래스가 비었는지 확인
      *
@@ -30,15 +33,21 @@ public class StringUtil {
      * @return
      */
     @NonNull
-    public static boolean IsEmpty(@NonNull Object text) {
-        return MaybeUtil.JustNullable(text.toString()).
-                map(new IExFunction<String, Boolean>() {
-                    @Override
-                    public Boolean apply(@NonNull String str) throws Exception {
-                        return str.isEmpty();
-                    }
-                }).
-                blockingGet(true);
+    public static boolean IsEmpty(@Nullable Object text) {
+        return MaybeUtil.JustNullable(text).
+                    map(new IExFunction<Object, Boolean>() {
+                        @Override
+                        public Boolean apply(@NonNull Object str) throws Exception {
+                            final String toStr = str.toString();
+
+                            if (toStr != null) {
+                                return toStr.toString().isEmpty();
+                            } else {
+                                return true;
+                            }
+                        }
+                    }).
+                    blockingGet(true);
     }
 
     /**

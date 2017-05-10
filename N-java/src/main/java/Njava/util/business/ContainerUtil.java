@@ -21,6 +21,8 @@ import io.reactivex.annotations.Nullable;
 
 public class ContainerUtil {
 
+    private ContainerUtil(){}
+
     /**
      * Collection 빈 상태 확인.
      *

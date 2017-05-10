@@ -1,6 +1,6 @@
 package Njava.function.extension.supportFunction;
 
-import Njava.modeler.NxModeler;
+import Njava.common.NxComponent;
 import io.reactivex.annotations.NonNull;
 
 import java.util.Comparator;
@@ -11,7 +11,7 @@ import java.util.Comparator;
  * Created by Doohyun on 2017. 3. 2..
  */
 
-public class NullAbleComparator<T> extends NxModeler implements Comparator<T> {
+public class NullAbleComparator<T> extends NxComponent implements Comparator<T> {
     private Boolean nullFirst = false;
     private Comparator<T> real;
 

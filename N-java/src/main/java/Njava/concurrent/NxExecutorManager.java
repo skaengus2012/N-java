@@ -2,7 +2,7 @@ package Njava.concurrent;
 
 import Njava.concurrent.priority.*;
 import Njava.function.exceptionLambda.IExRunnable;
-import Njava.modeler.NxModeler;
+import Njava.common.NxComponent;
 import Njava.util.function.LambdaUtil;
 import io.reactivex.Maybe;
 import io.reactivex.annotations.NonNull;
@@ -19,7 +19,7 @@ import java.util.concurrent.*;
  * <p>
  * Created by Doohyun on 2017. 4. 16..
  */
-public class NxExecutorManager extends NxModeler {
+public class NxExecutorManager extends NxComponent {
 
     /**
      * PRIORITY CONST.

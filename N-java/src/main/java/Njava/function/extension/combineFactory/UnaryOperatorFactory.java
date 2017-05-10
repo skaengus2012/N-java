@@ -10,10 +10,20 @@ import io.reactivex.annotations.NonNull;
  * Created by Doohyun on 2017. 3. 12..
  */
 
-public class IUnaryOperatorFactory<T> extends FunctionFactory<T, T>{
+public class UnaryOperatorFactory<T> extends FunctionFactory<T, T>{
 
-    public IUnaryOperatorFactory(@NonNull IUnaryOperator<T> iUnaryOperator) {
+    public UnaryOperatorFactory(@NonNull IUnaryOperator<T> iUnaryOperator) {
         super(iUnaryOperator);
+    }
+
+    /**
+     * Return UnaryOperator
+     *
+     * @return
+     */
+    @Override
+    public IUnaryOperator<T> get() {
+        return (IUnaryOperator<T>)super.get();
     }
 
     /**
@@ -21,7 +31,8 @@ public class IUnaryOperatorFactory<T> extends FunctionFactory<T, T>{
      *
      * @return
      */
-    public IExUnaryOperator<T> getEx() {
+    @Override
+    public IExUnaryOperator<T> getRx() {
         return new IExUnaryOperator<T>() {
             @Override
             public T apply(@NonNull T t) throws Exception {

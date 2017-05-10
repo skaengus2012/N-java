@@ -1,7 +1,7 @@
 package Njava.OOP;
 
 import Njava.function.exceptionLambda.IExConsumer;
-import Njava.modeler.NxModeler;
+import Njava.common.NxComponent;
 import Njava.util.business.ContainerUtil;
 import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
@@ -13,7 +13,7 @@ import java.util.Set;
  *
  * Created by Doohyun on 2017. 4. 13..
  */
-public class ObserverManager<T> extends NxModeler {
+public class ObserverManager<T> extends NxComponent {
 
     private Set<T> observerSet;
 
