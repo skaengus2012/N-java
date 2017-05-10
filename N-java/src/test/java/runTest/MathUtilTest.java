@@ -27,6 +27,9 @@ public class MathUtilTest {
     public void runBigDecimalAverageTest() {
         List<BigDecimal> bigDecimalList = Arrays.asList(BigDecimal.ZERO, new BigDecimal(5), new BigDecimal(7));
 
-        System.out.println(Observable.fromIterable(bigDecimalList).to(MathUtil.AverageBigDecimal()).blockingSingle());
+       Observable<BigDecimal> observable = Observable.fromIterable(bigDecimalList);
+
+        System.out.println(observable.to(MathUtil.AverageBigDecimal()).blockingSingle());
+        System.out.println(observable.to(MathUtil.SumBigDecimal()).blockingSingle());
     }
 }
