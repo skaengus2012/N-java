@@ -45,7 +45,7 @@ Add it your pom.xml at your project.
 
 # Support Function
 
-<B>1. Lambda combination</B> : https://github.com/skaengus2012/N-java/wiki/OPEN-N-java-v0.2-release-wiki!#lambda-combination<br/>
-<B>2. MaybeUtil</B> : https://github.com/skaengus2012/N-java/wiki/OPEN-N-java-v0.2-release-wiki!#maybeutil<br/>
-<B>3. TimeUtil & TimeBuilder </B> : https://github.com/skaengus2012/N-java/wiki/OPEN-N-java-v0.2-release-wiki!#timeutil--timebuilder <br/>
-<B>4. CheckUtil </B> : https://github.com/skaengus2012/N-java/wiki/OPEN-N-java-v0.2-release-wiki!#checkutil <br/>
+<B>1. Lambda combination</B> : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#lambda-combination<br/>
+<B>2. MaybeUtil</B> : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#maybeutil<br/>
+<B>3. TimeUtil & TimeBuilder </B> : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#timeutil--timebuilder <br/>
+<B>4. CheckUtil </B> : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#checkutil <br/>
