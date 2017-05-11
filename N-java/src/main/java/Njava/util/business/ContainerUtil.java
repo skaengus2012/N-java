@@ -278,4 +278,41 @@ public class ContainerUtil {
     public static <T, E> Map<T, E> CreateSortedMap(Comparator<T> comparator) {
         return new TreeMap<>(comparator);
     }
+
+    /**
+     * Make Union Set
+     *
+     * @param list1
+     * @param list2
+     * @param <T>
+     * @return
+     */
+    public <T> Collection<T> Union(Collection<T> list1, Collection<T> list2) {
+        HashSet<T> set = new HashSet<>();
+
+        set.addAll(list1);
+        set.addAll(list2);
+
+        return set;
+    }
+
+    /**
+     * Make Intersection Set.
+     *
+     * @param list1
+     * @param list2
+     * @param <T>
+     * @return
+     */
+    public <T> Collection<T> Intersection(Collection<T> list1, Collection<T> list2) {
+        HashSet<T> list = new HashSet<>();
+
+        for (T t : list1) {
+            if (list2.contains(t)) {
+                list.add(t);
+            }
+        }
+
+        return list;
+    }
 }
