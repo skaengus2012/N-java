@@ -1,7 +1,9 @@
 package runTest;
 
+import Njava.function.exceptionLambda.IExConsumer;
 import Njava.util.function.MathUtil;
 import io.reactivex.Observable;
+import io.reactivex.annotations.NonNull;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -31,5 +33,7 @@ public class MathUtilTest {
 
         System.out.println(observable.to(MathUtil.AverageBigDecimal()).blockingSingle());
         System.out.println(observable.to(MathUtil.SumBigDecimal()).blockingSingle());
+
+        List<BigDecimal> bigDecimals = Arrays.asList(new BigDecimal(3), new BigDecimal(4), new BigDecimal(3));
     }
 }

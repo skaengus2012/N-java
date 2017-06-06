@@ -42,7 +42,7 @@ public class ObservableAverageBigDecimal extends ObservableWithSource<BigDecimal
         public void onComplete() {
             int c = count;
             if (c != 0) {
-                complete(accumulator.divideToIntegralValue(new BigDecimal(c)));
+                complete(accumulator.divide(new BigDecimal(c), 10, BigDecimal.ROUND_HALF_UP));
             } else {
                 actual.onComplete();
             }
