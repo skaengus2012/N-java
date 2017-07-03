@@ -49,4 +49,4 @@ Add it your pom.xml at your project.
 <B>2. MaybeUtil</B> : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#maybeutil<br/>
 <B>3. TimeUtil & TimeBuilder </B> : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#timeutil--timebuilder <br/>
 <B>4. CheckUtil </B> : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#checkutil <br/>
-<B>5. Between </B : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#between
+<B>5. Between </B> : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#between
