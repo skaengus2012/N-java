@@ -4,10 +4,12 @@ import Njava.function.exceptionLambda.IExConsumer;
 import Njava.util.time.TimeBuilder;
 import Njava.util.time.TimeUtil;
 import Njava.util.time.duration.Duration;
+import com.google.gson.Gson;
 import io.reactivex.annotations.NonNull;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Created by Doohyun on 2017. 3. 26..
@@ -16,9 +18,17 @@ public class TimeUtilTest {
 
     @org.junit.Test
     public void runEndOfDayTest() {
-        Calendar calendar = TimeUtil.GetCalendarEndDayOfMonth(2016, 2);
+      //  Calendar calendar = TimeUtil.GetCalendarEndDayOfMonth(2016, 2);
 
-        System.out.println(TimeUtil.GetMonth(calendar) + " " + TimeUtil.GetMonthForHuman(calendar));
+     //   System.out.println(TimeUtil.GetMonth(calendar) + " " + TimeUtil.GetMonthForHuman(calendar));
+
+        HashMap<String, Object> param = new HashMap<>();
+        param.put("date", new Date());
+
+        Gson gson = new Gson();
+
+        System.out.println(gson.toJson(param));
+
     }
 
     @org.junit.Test

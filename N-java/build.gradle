@@ -20,7 +20,4 @@ dependencies {
 
     // for Cloner
     compile 'uk.com.robust-it:cloning:1.9.3'
-
-    // Gson
-    compile group: 'com.google.code.gson', name: 'gson', version: '2.3.1'
 }

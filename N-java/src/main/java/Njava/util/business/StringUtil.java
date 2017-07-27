@@ -1,9 +1,6 @@
 package Njava.util.business;
 
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.Callable;
@@ -11,7 +8,6 @@ import java.util.concurrent.Callable;
 import Njava.function.exceptionLambda.IExBiConsumer;
 import Njava.function.exceptionLambda.IExFunction;
 import Njava.util.function.MaybeUtil;
-import com.google.gson.*;
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -210,40 +206,6 @@ public class StringUtil {
                 return Float.parseFloat(s);
             }
         });
-    }
-
-    /**
-     * Object to Json.
-     *
-     * @param object
-     * @return
-     */
-    @NonNull
-    public static String ToJson(@NonNull Object object) {
-
-        // Null Check
-        CheckUtil.NullCheck(object, "[Error] target object is null, [StringUtil::Tojson]", RuntimeException.class);
-
-        // Object 객체 중, Date 객체들은 모두 Long 으로 변환하여 json 을 만든다.
-        final Gson gson;
-        {
-            gson = new GsonBuilder().
-                        registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
-                            @Override
-                            public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-                                return new Date(json.getAsJsonPrimitive().getAsLong());
-                            }
-                        }).
-                        registerTypeAdapter(Date.class, new JsonSerializer<Date>() {
-                            @Override
-                            public JsonElement serialize(Date src, Type typeOfSrc, JsonSerializationContext context) {
-                                return new JsonPrimitive(src.getTime());
-                            }
-                        }).
-                        create();
-        }
-
-        return gson.toJson(object);
     }
 
 }
