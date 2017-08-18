@@ -10,7 +10,7 @@ import io.reactivex.annotations.NonNull;
  *
  * Created by Doohyun on 2017. 7. 3..
  */
-public final class Between<T extends Comparable> {
+public final class Between<T extends Comparable<T>> {
 
     private T minValue, maxValue;
 
@@ -61,11 +61,11 @@ public final class Between<T extends Comparable> {
      * @param value
      * @return
      */
-    public Boolean contains(@NonNull Comparable<?> value) {
+    public Boolean contains(@NonNull T value) {
         Boolean result = MaybeUtil.JustNullable(value).
-                            map(new IExFunction<Comparable, Boolean>() {
+                            map(new IExFunction<T, Boolean>() {
                                 @Override
-                                public Boolean apply(@NonNull Comparable v) throws Exception {
+                                public Boolean apply(@NonNull T v) throws Exception {
 
                                     // Comparable Check!
 
