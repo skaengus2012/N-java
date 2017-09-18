@@ -20,7 +20,7 @@ allprojects {
 <B>STEP2</B> : Add the dependency:<br/>
 ```gradle
 dependencies {
-    compile 'com.github.skaengus2012:N-java:v0.3.0-beta'
+    compile 'com.github.skaengus2012:N-java:v0.3.3-beta'
 }
 ```
 
