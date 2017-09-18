@@ -24,7 +24,7 @@ public final class Between<T extends Comparable<T>> {
      * @param <T>
      * @return
      */
-    public static <T extends Comparable<T>>Between Just(@NonNull T minValue, @NonNull T maxValue) {
+    public static <T extends Comparable<T>>Between<T> Just(@NonNull T minValue, @NonNull T maxValue) {
         Between<T> range = new Between<>();
 
         // NULL CHECK!!!!
