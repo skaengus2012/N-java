@@ -68,6 +68,23 @@ public class MaybeUtil {
     }
 
     /**
+     * If t is not null, consumer param will execute. But Null value will be emptyRunnable;
+     *
+     * @param t
+     * @param consumer
+     * @param emptyRunnable
+     * @param <T>
+     */
+    public static <T> void Subscribe(
+            @Nullable T t
+            , @NonNull IExConsumer<T> consumer
+            , @NonNull IExRunnable emptyRunnable) {
+        Maybe<T> tMaybe = JustNullable(t);
+
+        Subscribe(t, consumer, emptyRunnable);
+    }
+
+    /**
      * If maybe is empty, Runnable will be excute.
      *
      * @param maybe
