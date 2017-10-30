@@ -51,6 +51,17 @@ public final class TimeBuilder implements Comparable<TimeBuilder> {
     }
 
     /**
+     * Create TimeBuilder
+     *
+     * @param dateTime
+     * @return
+     */
+    @NonNull
+    public static TimeBuilder Create(@NonNull Long dateTime) {
+        return Create(new Date(dateTime));
+    }
+
+    /**
      * Create TimeBuilder using Date.
      *
      * @param date
