@@ -75,13 +75,13 @@ public class MaybeUtil {
      * @param emptyRunnable
      * @param <T>
      */
-    public static <T> void Subscribe(
+    public static <T> void SubscribeNullable(
             @Nullable T t
             , @NonNull IExConsumer<T> consumer
             , @NonNull IExRunnable emptyRunnable) {
         Maybe<T> tMaybe = JustNullable(t);
 
-        Subscribe(t, consumer, emptyRunnable);
+        Subscribe(tMaybe, consumer, emptyRunnable);
     }
 
     /**
