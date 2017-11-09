@@ -45,7 +45,12 @@ public final class TimeBuilder implements Comparable<TimeBuilder> {
     @NonNull
     public static TimeBuilder Create(@NonNull Calendar calendar) {
         TimeBuilder timeBuilder = new TimeBuilder();
-        timeBuilder.calendar = calendar;
+
+        Calendar newCal = Calendar.getInstance();
+        newCal.setTimeInMillis(calendar.getTimeInMillis());
+
+
+        timeBuilder.calendar = newCal;
 
         return timeBuilder;
     }
