@@ -4,7 +4,6 @@ import Njava.function.exceptionLambda.IExConsumer;
 import Njava.util.time.TimeBuilder;
 import Njava.util.time.TimeUtil;
 import Njava.util.time.duration.Duration;
-import com.google.gson.Gson;
 import io.reactivex.annotations.NonNull;
 
 import java.util.Calendar;
@@ -24,10 +23,6 @@ public class TimeUtilTest {
 
         HashMap<String, Object> param = new HashMap<>();
         param.put("date", new Date());
-
-        Gson gson = new Gson();
-
-        System.out.println(gson.toJson(param));
 
     }
 
