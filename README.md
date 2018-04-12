@@ -39,7 +39,7 @@ Add it your pom.xml at your project.
 <dependency>
    <groupId>com.github.skaengus2012</groupId>
    <artifactId>N-java</artifactId>
-   <version>v0.4.2-beta</version>
+   <version>v0.4.3-beta</version>
 </dependency>
 ```
 
