@@ -7,7 +7,7 @@ public class MessageException extends Exception{
     private String message = "";
 
     /**
-     * @param uri
+     * @param message
      * 사용자에게 알려줄 메시지를 파라미터로 입력받는다.
      */
     public MessageException(String message){

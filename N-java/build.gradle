@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'com.github.skaengus2012'
-version = '0.4.1-beta'
+version = '0.5-beta'
 
 repositories {
     mavenCentral()
@@ -15,8 +15,8 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
     // Rx Java
-    compile 'io.reactivex.rxjava2:rxjava:2.0.7'
-    compile 'com.github.akarnokd:rxjava2-extensions:0.16.3'
+    compile 'io.reactivex.rxjava2:rxjava:2.x.x'
+    compile 'com.github.akarnokd:rxjava2-extensions:0.19.4'
 
     // for Cloner
     compile group: 'uk.com.robust-it', name: 'cloning', version: '1.9.9'
